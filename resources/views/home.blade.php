@@ -59,7 +59,7 @@
                 <div class="row contacts">
                   <div class="col invoice-to">
                     <div class="text-gray-light">Délivré à:</div>
-                    <h2 class="to">Mr/Mme: John Doe</h2>
+                    <h2 class="to">John Doe</h2>
                     <div class="address">
                       Francophonie, Niamey - Niger
                     </div>
@@ -90,25 +90,20 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($items as $item)
+                        
                     <tr>
                       <td class="no">01</td>
                       <td class="text-left">
-                        <h3>
-                          <a target="_blank" href="javascript:;">
-                            Youtube channel
-                          </a>
-                        </h3>
-                        <a target="_blank" href="javascript:;">
-                          Useful videos
-                        </a>
-                        to improve your Javascript skills. Subscribe and stay
-                        tuned :)
+                        <h3><a target="_blank" href="javascript:;">Y{{$item->designation_title}}</a></h3>
+                        {{$item->designation_detail}} 
                       </td>
-                      <td class="unit">$0.00</td>
-                      <td class="qty">100</td>
-                      <td class="total">$0.00</td>
+                      <td class="unit">$ {{$item->unit_price}} </td>
+                      <td class="qty">{{$item->quantity}}</td>
+                      <td class="total">${{$item->unit_price}}</td>
                     </tr>
-                    <tr>
+                    @endforeach
+                    {{-- <tr>
                       <td class="no">02</td>
                       <td class="text-left">
                         <h3>Website Design</h3>
@@ -138,7 +133,7 @@
                       <td class="unit">$40.00</td>
                       <td class="qty">20</td>
                       <td class="total">$800.00</td>
-                    </tr>
+                    </tr> --}}
                   </tbody>
                   <tfoot>
                     <tr>
@@ -177,6 +172,8 @@
                     <b> Date limite de règlement :</b> 24H APRES LIVRAISON <br>
                   </div>
                 </div>
+
+               
               </main>
               <footer>
                 Compte Ecobank: <b>160940732001</b> Compte Orabank: <b>76495401901 <br>
