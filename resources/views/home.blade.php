@@ -21,12 +21,13 @@
           <div id="invoice">
             <div class="toolbar hidden-print">
               <div class="text-end">
-                <button type="button" class="btn btn-dark">
+                {{-- <button type="button" class="btn btn-dark">
                   <i class="fa fa-print"></i> Print
-                </button>
+                </button> --}}
                 <button type="button" class="btn btn-danger">
-                  <i class="fa fa-file-pdf-o"></i> Export as PDF
+                  <i class="fa fa-file-pdf-o"></i> Exporter en PDF
                 </button>
+                <a href="{{route('export')}}">Download</a>
               </div>
               <hr />
             </div>
@@ -192,5 +193,24 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const exportPdfButton = document.querySelector('.btn-danger');
+    exportPdfButton.addEventListener('click', function() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      // Assuming you want to capture the entire document body. Adjust selector as needed.
+      doc.html(document.querySelector('#invoice'), {
+        callback: function (doc) {
+          doc.save('invoice.pdf');
+        },
+        x: 10,
+        y: 10
+      });
+    });
+  });
+</script>
   </body>
 </html>
