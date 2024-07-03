@@ -8,3 +8,5 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 Route::get('/export', [PDFExportController::class, 'export'])->name('export');
+Route::get('/create', [PDFExportController::class, 'create'])->name('create');
+Route::post('/store', [PDFExportController::class, 'store'])->name('store');

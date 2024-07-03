@@ -1,7 +1,33 @@
 body {
+    font-family: "Roboto", sans-serif;
     margin-top: 20px;
     background-color: #f7f7ff;
 }
+/* form */
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.container form {
+    width: 100%;
+    /* max-width: 600px; */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.mb-3 {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.itemField {
+    width: 100%;
+}
+
 #invoice {
     padding: 0px;
 }

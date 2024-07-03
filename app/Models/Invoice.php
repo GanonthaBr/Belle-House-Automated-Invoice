@@ -11,6 +11,5 @@ class Invoice extends Model
     protected $fillable = [
         'name', 'number', 'echeance', 'client_name', 'client_quartier', 'client_city', 'client_country',
         'client_phone', 'client_mail', 'designation_title', 'designation_detail', 'quantity', 'unit_price',
-
     ];
 }

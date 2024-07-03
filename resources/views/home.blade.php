@@ -148,7 +148,7 @@
                     </tr>
                     <tr>
                       <td colspan="2"></td>
-                      <td colspan="2">TAX 25%</td>
+                      <td colspan="2">ISB 2%</td>
                       <td> <b>$6,500.00</b> </td>
                     </tr>
                     <tr>
