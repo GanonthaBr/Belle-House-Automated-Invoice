@@ -168,12 +168,14 @@
                     </tr>
                   </tfoot>
                 </table>
-                <div class="thanks">Thank you!</div>
+                <div class="thanks">Merci!</div>
                 <div class="notices">
-                  <div>NOTICE:</div>
+                  <div class="title">NOTE Importante!</div>
                   <div class="notice">
-                    A finance charge of 1.5% will be made on unpaid balances
-                    after 30 days.
+                    <b> Mode de règlement </b> EN LIQUIDE <br>
+                    <b>Conditions de règlement : </b>APRES LIVRAISON <br>
+                    <b> Date limite de règlement :</b> 24H APRES LIVRAISON <br>
+
                   </div>
                 </div>
               </main>

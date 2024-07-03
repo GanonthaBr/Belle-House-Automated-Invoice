@@ -85,9 +85,13 @@ body {
     background: #e7f2ff;
     padding: 10px;
 }
+.invoice main .notices .title {
+    color: #61a1d6;
+    text-decoration: underline;
+}
 
 .invoice main .notices .notice {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .invoice table {
