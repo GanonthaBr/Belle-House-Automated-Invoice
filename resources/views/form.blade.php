@@ -17,12 +17,8 @@
             <fieldset>
                 <legend>Informations du client</legend>
                 <div class="mb-3">
-                    <label for="nom" class="form-label">Nom</label>
-                    <input type="text" class="form-control" name="nom" id="nom">
-                </div>
-                <div class="mb-3">
-                    <label for="client_quartier" class="form-label">Quartier:</label>
-                    <input type="text" class="form-control" name="client_quartier" id="client_quartier">
+                    <label for="client_name" class="form-label">Nom</label>
+                    <input type="text" class="form-control" name="client_name" id="client_name">
                 </div>
                 <div class="mb-3">
                     <label for="client_quartier" class="form-label">Quartier:</label>
@@ -33,8 +29,8 @@
                     <input type="text" class="form-control" name="client_ville" id="client_ville">
                 </div>
                 <div class="mb-3">
-                    <label for="client_pays" class="form-label">Pays:</label>
-                    <input type="text" class="form-control" name="client_pays" id="client_pays">
+                    <label for="client_country" class="form-label">Pays:</label>
+                    <input type="text" class="form-control" name="client_country" id="client_country">
                 </div>
                 <div class="mb-3">
                     <label for="client_phone" class="form-label">Telephone:</label>
@@ -49,13 +45,13 @@
                 <legend>Informations de la Facture</legend>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="facture" id="facture">
+                    <input class="form-check-input" type="radio" name="name" id="facture">
                     <label class="form-check-label" for="facture">
                         Facture
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Devis" id="Devis" checked>
+                    <input class="form-check-input" type="radio" name="name" id="Devis" checked>
                     <label class="form-check-label" for="Devis">
                         Devis
                     </label>
@@ -77,7 +73,7 @@
                             <input type="text" class="form-control" name="itemNames[]" placeholder="Designation">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="itemNames[]" placeholder="Details">
+                            <input type="text" class="form-control" name="itemDetails[]" placeholder="Details">
                         </div>
                         <div class="mb-3">
                             <input type="number" class="form-control" name="itemQuantities[]" placeholder="Quantity">
@@ -90,6 +86,7 @@
                 </div>
                 <button type="button" id="addItemField">Add Item</button>
             </fieldset>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
     <script>
@@ -102,7 +99,7 @@
                             <input type="text" class="form-control" name="itemNames[]" placeholder="Designation">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="itemNames[]" placeholder="Details">
+                            <input type="text" class="form-control" name="itemDetails[]" placeholder="Details">
                         </div>
                         <div class="mb-3">
                             <input type="number" class="form-control" name="itemQuantities[]" placeholder="Quantity">

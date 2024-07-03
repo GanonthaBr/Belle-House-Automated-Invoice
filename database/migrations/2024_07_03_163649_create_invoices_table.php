@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('number');
             $table->date('echeance');
             $table->string('client_name')->nullable();
@@ -21,7 +22,6 @@ return new class extends Migration
             $table->string('client_country')->nullable();
             $table->string('client_phone')->nullable();
             $table->string('client_mail')->nullable();
-
             $table->timestamps();
         });
     }
