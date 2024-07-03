@@ -175,7 +175,6 @@
                     <b> Mode de règlement </b> EN LIQUIDE <br>
                     <b>Conditions de règlement : </b>APRES LIVRAISON <br>
                     <b> Date limite de règlement :</b> 24H APRES LIVRAISON <br>
-
                   </div>
                 </div>
               </main>
