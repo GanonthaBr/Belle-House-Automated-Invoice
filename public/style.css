@@ -3,6 +3,13 @@ body {
     margin-top: 20px;
     background-color: #f7f7ff;
 }
+.text-end a {
+    color: #fff;
+}
+.company p {
+    font-size: 12px;
+    text-align: center;
+}
 /* form */
 .container {
     display: flex;

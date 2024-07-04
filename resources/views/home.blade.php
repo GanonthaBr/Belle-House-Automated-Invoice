@@ -15,6 +15,17 @@
 
 <body>
   <div class="container">
+    {{-- header with logo, short description text, company name  --}}
+    <div class="header">
+      <div class="logo">
+        <img src="{{asset('images/logo.png')}}" alt="logo" height="80" width="120"/>
+      </div>
+      <div class="company">
+        <p>ENTREPRISE DE CONSTRUCTION MODERNE</p>
+        <h2>Facturation</h2>
+      </div>
+  </div>
+  <div class="container">
     <div class="card">
       <div class="card-body">
         <div id="invoice">
@@ -59,7 +70,7 @@
                           <tr>
                             <td>{{$invoice->name}}</td>
                             <td>{{$invoice->client_name}}</td>
-                            <td>{{$invoice->created_at}}</td>
+                            <td>{{ $invoice->created_at->format('d/m/Y') }}</td>
                             <td>
                               <a href="{{route('show', $invoice->id)}}" class="btn btn-primary">Afficher</a>
                               <a href="{{route('export', $invoice->id)}}" class="btn btn-success">Télécharger</a>
@@ -69,6 +80,8 @@
                           @endforeach
                         </tbody>
                       </table>
+                      {{-- add new record--}}
+                      <a href="{{route('create')}}" class="btn btn-primary">Ajouter une nouvelle facture</a>
                     </div>
               </main>
              

@@ -20,13 +20,13 @@
                 <div id="invoice">
                     <div class="toolbar hidden-print">
                         <div class="text-end">
-                            {{-- <button type="button" class="btn btn-dark">
-                  <i class="fa fa-print"></i> Print
-                </button> --}}
-                            <button type="button" class="btn btn-danger">
+                            <a type="button" href="{{route('home')}}" class="btn btn-dark">
+                                <i class="fa fa-print"></i> Retour
+                            </a>
+                            <a type="button" href="{{route('export',$invoice->id)}}" class="btn btn-danger">
                                 <i class="fa fa-file-pdf-o"></i> Exporter en PDF
-                            </button>
-                            <a href="{{route('export',$invoice->id)}}">Télécharger</a>
+                            </a>
+
                         </div>
                         <hr />
                     </div>
@@ -99,7 +99,7 @@
                                             <td class="no">01</td>
                                             <td class="text-left">
                                                 <h3><a target="_blank" href="javascript:;">{{$item->designation_title}}</a></h3>
-                                                {{$item->designation_detail}}
+                                                {{$item->designation_detail??''}}
                                             </td>
                                             <td class="qty">{{$item->quantity}}</td>
                                             <td class="unit"> {{$item->unit_price}}</td>

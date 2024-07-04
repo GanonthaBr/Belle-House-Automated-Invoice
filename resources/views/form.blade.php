@@ -12,6 +12,14 @@
 
 <body>
     <div class="container">
+        <h1>Formulaire de Facturation</h1>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start p-md-4">
+        <a class="btn btn-primary me-md-2" href="{{route('home')}}" type="button">
+            < Retour </a>
+    </div>
+    <div class="container">
+
         <form action="{{route('store')}}" method="post">
             @csrf
             <fieldset>
