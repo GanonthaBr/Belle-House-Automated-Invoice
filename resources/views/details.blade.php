@@ -85,11 +85,12 @@
                                             <th>#</th>
                                             <th class="text-left">Désignation</th>
                                             <th class="text-right">Quantité</th>
-                                            <th class="text-right">Prix Unitaire HT</th>
-                                            <th class="text-right">Prix Total HT</th>
+                                            <th class="text-right">Prix Unitaire HT (FCFA)</th>
+                                            <th class="text-right">Prix Total HT (FCFA)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+
 
                                         {{-- $blog->comments as $comment --}}
                                         @if ($invoice->items)
@@ -101,8 +102,8 @@
                                                 {{$item->designation_detail}}
                                             </td>
                                             <td class="qty">{{$item->quantity}}</td>
-                                            <td class="unit">$ {{$item->unit_price}} </td>
-                                            <td class="total">${{$item->unit_price}}</td>
+                                            <td class="unit"> {{$item->unit_price}}</td>
+                                            <td class="total">{{$item->unit_price * $item->quantity}}</td>
                                         </tr>
                                         @endforeach
                                         @endif
@@ -111,30 +112,44 @@
 
                                     </tbody>
                                     <tfoot>
+                                        <!-- Do the maths -->
+                                        @php
+                                        $totalBeforeTax = 0;
+                                        @endphp
+                                        @foreach ($invoice->items as $item)
+                                        @php
+                                        $totalBeforeTax += $item->unit_price * $item->quantity;
+                                        @endphp
+                                        @endforeach
+                                        @php
+                                        $isb = 0.02 * $totalBeforeTax;
+                                        $totalAfterTax = $totalBeforeTax - $isb;
+                                        $restToPay = $totalAfterTax - $invoice->montant_avance;
+                                        @endphp
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">Montant Total HT</td>
-                                            <td> <b>$6,500.00</b> </td>
+                                            <td>{{$totalBeforeTax}} <b> FCFA</b> </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">ISB 2%</td>
-                                            <td> <b>$6,500.00</b> </td>
+                                            <td> <b> {{$isb}} FCFA</b> </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">Montant Total TTC</td>
-                                            <td> <b>$6,500.00</b> </td>
+                                            <td> <b>{{$totalAfterTax}} FCFA</b> </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">Montant déjà versé</td>
-                                            <td> <b>$6,500.00</b> </td>
+                                            <td> <b>{{$invoice->montant_avance}}</b> </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">Reste à payer</td>
-                                            <td> <b>$6,500.00</b> </td>
+                                            <td> <b>{{ $restToPay}} FCFA</b> </td>
                                         </tr>
                                     </tfoot>
                                 </table>
