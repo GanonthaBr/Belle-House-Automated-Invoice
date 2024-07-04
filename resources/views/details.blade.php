@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col company-details">
                                         <h2 class="name">
-                                            <a target="_blank" href="#"> Belle House</a>
+                                            <a target="_blank" href="#">  <b>BELLE HOUSE</b> </a>
                                         </h2>
                                         <span>ENTREPRISE DE CONSTRUCTION MODERNE</span>
                                         <div>Adresse : <b>Bobiel Niamey-Niger</b> </div>
@@ -67,16 +67,18 @@
                                             Tel: {{$invoice->client_phone}}
                                         </div>
                                         <div class="email">
-                                            <a href="{{'mailto:'. $invoice->client_mail}}"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">{{$invoice->client_mail}}</span></a>
+                                            <a href="{{'mailto:'. $invoice->client_mail}}"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">{{$invoice->client_mail ??''}}</span></a>
                                         </div>
                                     </div>
                                     <div class="designation">
-                                        <h1>{{$invoice->name}}</h1>
+                                        <h1>{{$invoice->name == 'Devis'?'Facture Proforma': 'Facture'}}</h1>
                                     </div>
                                     <div class="col invoice-details">
                                         <h1 class="invoice-id">Numéro de facture : BH/{{$invoice->name=="Facture"?'F':'D'}}{{$invoice->number}}/{{date('Y',strtotime($invoice->created_at))}}/{{$invoice->created_at->format('m')}}</h1>
                                         <div class="date">Date: <b>{{$invoice->created_at->format('d/m/Y')}}</b> </div>
-                                        <div class="date">Délai de validité: <b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $invoice->echeance)->format('d/m/y') }}</b> </div>
+                                        @if ($invoice->name == "Devis")
+                                            <div class="date">Délai de validité: <b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $invoice->echeance)->format('d/m/y') }}</b> </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <table>
@@ -102,8 +104,8 @@
                                                 {{$item->designation_detail??''}}
                                             </td>
                                             <td class="qty">{{$item->quantity}}</td>
-                                            <td class="unit"> {{$item->unit_price}}</td>
-                                            <td class="total">{{$item->unit_price * $item->quantity}}</td>
+                                            <td class="unit"> {{ number_format($item->unit_price, 0, '.', ' ') }}</td>
+                                            <td class="total"> {{ number_format($item->unit_price * $item->quantity, 0, '.', ' ') }}</td>
                                         </tr>
                                         @endforeach
                                         @endif
@@ -129,27 +131,27 @@
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">Montant Total HT</td>
-                                            <td>{{$totalBeforeTax}} <b> FCFA</b> </td>
+                                            <td> {{ number_format($totalBeforeTax, 0, '.', ' ') }} <b> FCFA</b> </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">ISB 2%</td>
-                                            <td> <b> {{$isb}} FCFA</b> </td>
+                                            <td> <b>  {{ number_format($isb, 0, '.', ' ') }} FCFA</b> </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">Montant Total TTC</td>
-                                            <td> <b>{{$totalAfterTax}} FCFA</b> </td>
+                                            <td> {{ number_format($totalAfterTax, 0, '.', ' ') }} FCFA</b> </td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">Montant déjà versé</td>
                                             <td> <b>{{$invoice->montant_avanc ?? 0}}</b> </td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <td colspan="2"></td>
-                                            <td colspan="2">Reste à payer</td>
-                                            <td> <b>{{ $restToPay}} FCFA</b> </td>
+                                            <td colspan="2">Net à payer</td>
+                                            <td> <b> {{ number_format($restToPay, 0, '.', ' ') }} FCFA</b> </td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -157,17 +159,17 @@
                                 <div class="notices">
                                     <div class="title">NOTE Importante!</div>
                                     <div class="notice">
-                                        <b> Mode de règlement </b> EN LIQUIDE <br>
-                                        <b>Conditions de règlement : </b>APRES LIVRAISON <br>
-                                        <b> Date limite de règlement :</b> 24H APRES LIVRAISON <br>
+                                        <b> Mode de règlement </b> {{$invoice->mode_paiment}} <br>
+                                        {{-- <b>Conditions de règlement : </b>APRES LIVRAISON <br>
+                                        <b> Date limite de règlement :</b> 24H APRES LIVRAISON <br> --}}
                                     </div>
                                 </div>
 
 
                             </main>
                             <footer>
-                                Compte Ecobank: <b>160940732001</b> Compte Orabank: <b>76495401901 <br>
-                                    RCCM-NE-NIM-01-2017-A10-02845- NIF : 43391/Pl.</b>
+                               <span> Compte Ecobank: <b>160940732001</b> Compte Orabank: <b>76495401901 </b>Compte BIA:  <b>61001260006</b></span> <br>
+                                    RCCM-NE-NIM-01-2017-A10-02845- NIF : 43391/P.</b>
                             </footer>
                         </div>
 

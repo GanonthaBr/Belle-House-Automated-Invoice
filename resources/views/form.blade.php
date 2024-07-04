@@ -53,6 +53,8 @@
                 <legend>Informations de la Facture</legend>
 
                 <div class="form-check">
+                    <label for="name" class="form-label"> <b>Type:</b> </label> <br>
+
                     <input class="form-check-input" type="radio" name="name" id="facture" value="Facture">
                     <label class="form-check-label" for="facture">
                         Facture
@@ -61,21 +63,34 @@
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="name" id="Devis" value="Devis" checked>
                     <label class="form-check-label" for="Devis">
-                        Devis
+                        Facture Proforma
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label for="mode-paiment" class="form-label"> <b>Mode de Paiement</b> </label> <br>
+                    <input class="form-check-input" type="radio" name="mode-paiment" id="en_liquide" value="EN LIQUIDE">
+                    <label class="form-check-label" for="en_liquide">
+                        EN LIQUIDE
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="mode-paiment" id="par_banque" value="PAR BANQUE" checked>
+                    <label class="form-check-label" for="par_banque">
+                        PAR BANQUE
                     </label>
                 </div>
                 <div class="mb-3">
                     <label for="echeance" class="form-label">Echeance:</label>
                     <input type="date" class="form-control" name="echeance" id="echeance">
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="number" class="form-label">Numero de Facture:</label>
                     <input type="text" class="form-control" name="number" id="number">
-                </div>
-                <div class="mb-3">
+                </div> --}}
+                {{-- <div class="mb-3">
                     <label for="montant_avanc" class="form-label">Montant avancé:</label>
                     <input type="text" class=" form-control" name="montant_avanc" id="montant_avanc">
-                </div>
+                </div> --}}
             </fieldset>
             <fieldset>
                 <legend>Liste des Elements</legend>

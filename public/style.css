@@ -10,6 +10,9 @@ body {
     font-size: 12px;
     text-align: center;
 }
+.company-details span {
+    font-size: 14px;
+}
 /* form */
 .container {
     display: flex;
@@ -225,7 +228,9 @@ body {
     border-top: 1px solid #aaa;
     padding: 8px 0;
 }
-
+/* footer span {
+    font-size: 10px;
+} */
 @media print {
     .invoice {
         font-size: 11px !important;

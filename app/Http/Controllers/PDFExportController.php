@@ -14,7 +14,6 @@ class PDFExportController extends Controller
     {
         $invoice = Invoice::find($id);
         $view = view('details', compact('invoice'))->render();
-
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream();
@@ -29,7 +28,7 @@ class PDFExportController extends Controller
         try {
             $request->validate([
                 'name' => 'required',
-                'number' => 'required',
+                'number' => 'nullable',
                 'echeance' => 'required',
                 'client_name' => 'nullable',
                 'client_quartier' => 'nullable',
@@ -37,7 +36,8 @@ class PDFExportController extends Controller
                 'client_country' => 'nullable',
                 'client_phone' => 'nullable',
                 'client_mail' => 'nullable',
-                'montant_avanc' => 'required',
+                'montant_avanc' => 'nullable',
+                'mode_paiment' => 'nullable'
             ]);
 
             //contruct array of item details
@@ -50,11 +50,17 @@ class PDFExportController extends Controller
                     'unit_price' => request('itemPrices')[$i],
                 ];
             }
+            //get the last added invoice and retrieve its number
+            $lastInvoice = Invoice::latest()->first();
+            // $lastInvoice->number = 21;
+            $lastInvoiceNumber = $lastInvoice ? $lastInvoice->number : 0;
 
+            // dd($lastInvoiceNumber);
             //create an instance of invoice and save to db
             $invoice = Invoice::create([
                 'name' => request('name'),
                 'number' => request('number'),
+                'mode_paiment' => request('mode-paiment'),
                 'montant_avanc' => request('montant_avanc'),
                 'echeance' => request('echeance'),
                 'client_name' => request('client_name'),
