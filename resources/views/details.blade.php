@@ -124,7 +124,7 @@
                                         @php
                                         $isb = 0.02 * $totalBeforeTax;
                                         $totalAfterTax = $totalBeforeTax - $isb;
-                                        $restToPay = $totalAfterTax - $invoice->montant_avance;
+                                        $restToPay = $totalAfterTax - $invoice->montant_avanc;
                                         @endphp
                                         <tr>
                                             <td colspan="2"></td>
@@ -144,7 +144,7 @@
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">Montant déjà versé</td>
-                                            <td> <b>{{$invoice->montant_avance}}</b> </td>
+                                            <td> <b>{{$invoice->montant_avanc ?? 0}}</b> </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"></td>

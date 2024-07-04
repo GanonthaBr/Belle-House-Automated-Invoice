@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('client_country')->nullable();
             $table->string('client_phone')->nullable();
             $table->string('client_mail')->nullable();
+            $table->decimal('montant_avanc', 10, 2);
             $table->timestamps();
         });
     }

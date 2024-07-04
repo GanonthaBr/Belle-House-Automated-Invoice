@@ -36,8 +36,10 @@
                     {{-- session message in a card --}}
                     @if(session('message'))
                     <div class="alert alert-success">{{session('message')}}</div>
+                    @elseif(session('error'))
+                    <div class="alert alert-danger">{{session('error')}}</div>
                     @endif
-                    
+
                     <h4 class="card-title
                     ">Liste des Factures</h4>
                   </div>

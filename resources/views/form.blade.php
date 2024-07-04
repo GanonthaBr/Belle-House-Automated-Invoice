@@ -25,8 +25,8 @@
                     <input type="text" class="form-control" name="client_quartier" id="client_quartier">
                 </div>
                 <div class="mb-3">
-                    <label for="client_ville" class="form-label">Ville:</label>
-                    <input type="text" class="form-control" name="client_ville" id="client_ville">
+                    <label for="client_city" class="form-label">Ville:</label>
+                    <input type="text" class="form-control" name="client_city" id="client_city">
                 </div>
                 <div class="mb-3">
                     <label for="client_country" class="form-label">Pays:</label>
@@ -64,6 +64,10 @@
                     <label for="number" class="form-label">Numero de Facture:</label>
                     <input type="text" class="form-control" name="number" id="number">
                 </div>
+                <div class="mb-3">
+                    <label for="montant_avanc" class="form-label">Montant avancé:</label>
+                    <input type="text" class=" form-control" name="montant_avanc" id="montant_avanc">
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Liste des Elements</legend>
@@ -79,7 +83,7 @@
                             <input type="number" class="form-control" name="itemQuantities[]" placeholder="Quantity">
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="itemPrices[]" placeholder="Price">
+                            <input type="text" class="form-control" name="itemPrices[]" placeholder="Price">
                         </div>
                         <button type="button" onclick="removeItemField(this)">Remove</button>
                     </div>
