@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\App;
 
 class PDFExportController extends Controller
 {
-    public function export()
+    public function export($id)
     {
-        $view = view('home')->render();
+        $invoice = Invoice::find($id);
+        $view = view('details', compact('invoice'))->render();
+
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream();
@@ -67,6 +69,12 @@ class PDFExportController extends Controller
                 'unit_price' => $item['unit_price'],
             ]);
         }
-        return redirect()->route('home');
+        return redirect()->route('show', ['id' => $invoice->id]);
+    }
+
+    public function show($id)
+    {
+        $invoice = Invoice::find($id);
+        return view('details', compact('invoice'));
     }
 }

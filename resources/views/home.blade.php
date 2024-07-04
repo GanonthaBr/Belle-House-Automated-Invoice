@@ -23,10 +23,10 @@
               {{-- <button type="button" class="btn btn-dark">
                   <i class="fa fa-print"></i> Print
                 </button> --}}
-              <button type="button" class="btn btn-danger">
+              {{-- <button type="button" class="btn btn-danger">
                 <i class="fa fa-file-pdf-o"></i> Exporter en PDF
-              </button>
-              <a href="{{route('export')}}">Download</a>
+              </button> --}}
+              {{-- <a href="{{route('export',$invoice->id)}}">Download</a> --}}
             </div>
             <hr />
           </div>
@@ -56,124 +56,41 @@
                 </div>
               </header>
               <main>
-                <div class="row contacts">
-                  <div class="col invoice-to">
-                    <div class="text-gray-light">Délivré à:</div>
-                    <h2 class="to">John Doe</h2>
-                    <div class="address">
-                      Francophonie, Niamey - Niger
+            {{-- invoices list with buttons: show , download and display --}}
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title
+                    ">Liste des Factures</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Type</th>
+                            <th>Client</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach($invoices as $invoice)
+                          <tr>
+                            <td>{{$invoice->name}}</td>
+                            <td>{{$invoice->client_name}}</td>
+                            <td>{{$invoice->created_at}}</td>
+                            <td>
+                              <a href="{{route('show', $invoice->id)}}" class="btn btn-primary">Show</a>
+                              <a href="{{route('export', $invoice->id)}}" class="btn btn-success">Telecharger</a>
+                              <a href="{{route('destroy', $invoice->id)}}" class="btn btn-info">Supprimer</a>
+                            </td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
                     </div>
-                    <div class="address">
-                      Tel: +227 00 00 00 00
-                    </div>
-                    <div class="email">
-                      <a href="mailto:contact@bellehouseniger.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">Client@gmail.com</span></a>
-                    </div>
-                  </div>
-                  <div class="designation">
-                    <h1>FACTURE</h1>
-                  </div>
-                  <div class="col invoice-details">
-                    <h1 class="invoice-id">Numéro de facture : BH/F021/2024/07</h1>
-                    <div class="date">Date: <b>01/10/2018</b> </div>
-                    <div class="date">Délai de validité: <b>30/10/2018</b> </div>
-                  </div>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th class="text-left">Désignation</th>
-                      <th class="text-right">Quantité</th>
-                      <th class="text-right">Prix Unitaire HT</th>
-                      <th class="text-right">Prix Total HT</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($items as $item)
-                        
-                    <tr>
-                      <td class="no">01</td>
-                      <td class="text-left">
-                        <h3><a target="_blank" href="javascript:;">Y{{$item->designation_title}}</a></h3>
-                        {{$item->designation_detail}} 
-                      </td>
-                      <td class="unit">$ {{$item->unit_price}} </td>
-                      <td class="qty">{{$item->quantity}}</td>
-                      <td class="total">${{$item->unit_price}}</td>
-                    </tr>
-                    @endforeach
-                    {{-- <tr>
-                      <td class="no">02</td>
-                      <td class="text-left">
-                        <h3>Website Design</h3>
-                        Creating a recognizable design solution based on the
-                        company's existing visual identity
-                      </td>
-                      <td class="unit">$40.00</td>
-                      <td class="qty">03</td>
-                      <td class="total">$1,200.00</td>
-                    </tr>
-                    <tr>
-                      <td class="no">03</td>
-                      <td class="text-left">
-                        <h3>Website Development</h3>
-                        Developing a Content Management System-based Website
-                      </td>
-                      <td class="unit">$40.00</td>
-                      <td class="qty">80</td>
-                      <td class="total">$3,200.00</td>
-                    </tr>
-                    <tr>
-                      <td class="no">04</td>
-                      <td class="text-left">
-                        <h3>Search Engines Optimization</h3>
-                        Optimize the site for search engines (SEO)
-                      </td>
-                      <td class="unit">$40.00</td>
-                      <td class="qty">20</td>
-                      <td class="total">$800.00</td>
-                    </tr> --}}
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td colspan="2">Montant Total HT</td>
-                      <td> <b>$6,500.00</b> </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td colspan="2">ISB 2%</td>
-                      <td> <b>$6,500.00</b> </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td colspan="2">Montant Total TTC</td>
-                      <td> <b>$6,500.00</b> </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td colspan="2">Montant déjà versé</td>
-                      <td> <b>$6,500.00</b> </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2"></td>
-                      <td colspan="2">Reste à payer</td>
-                      <td> <b>$6,500.00</b> </td>
-                    </tr>
-                  </tfoot>
-                </table>
-                <div class="thanks">Merci!</div>
-                <div class="notices">
-                  <div class="title">NOTE Importante!</div>
-                  <div class="notice">
-                    <b> Mode de règlement </b> EN LIQUIDE <br>
-                    <b>Conditions de règlement : </b>APRES LIVRAISON <br>
-                    <b> Date limite de règlement :</b> 24H APRES LIVRAISON <br>
-                  </div>
-                </div>
-
-               
               </main>
               <footer>
                 Compte Ecobank: <b>160940732001</b> Compte Orabank: <b>76495401901 <br>
