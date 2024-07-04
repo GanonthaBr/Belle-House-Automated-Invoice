@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('designation_title');
             $table->integer('quantity');
             $table->text('designation_detail')->nullable();
-            $table->decimal('unit_price', 8, 2);
+            $table->decimal('unit_price', 10, 2);
             $table->timestamps();
         });
     }

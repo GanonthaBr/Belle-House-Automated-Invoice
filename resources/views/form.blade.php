@@ -45,13 +45,13 @@
                 <legend>Informations de la Facture</legend>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="name" id="facture">
+                    <input class="form-check-input" type="radio" name="name" id="facture" value="Facture">
                     <label class="form-check-label" for="facture">
                         Facture
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="name" id="Devis" checked>
+                    <input class="form-check-input" type="radio" name="name" id="Devis" value="Devis" checked>
                     <label class="form-check-label" for="Devis">
                         Devis
                     </label>

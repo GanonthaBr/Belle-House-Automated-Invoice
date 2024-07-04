@@ -20,41 +20,13 @@
         <div id="invoice">
           <div class="toolbar hidden-print">
             <div class="text-end">
-              {{-- <button type="button" class="btn btn-dark">
-                  <i class="fa fa-print"></i> Print
-                </button> --}}
-              {{-- <button type="button" class="btn btn-danger">
-                <i class="fa fa-file-pdf-o"></i> Exporter en PDF
-              </button> --}}
-              {{-- <a href="{{route('export',$invoice->id)}}">Download</a> --}}
+              
             </div>
             <hr />
           </div>
           <div class="invoice overflow-auto">
             <div class="header-div">
-              <header>
-                <div class="row">
-                  <div class="col">
-                    <a href="#">
-                      <img src="assets/images/logo.png" width="130" height="100" alt="logo" />
-                    </a>
-                  </div>
-                  <div class="col company-details">
-                    <h2 class="name">
-                      <a target="_blank" href="#"> Belle House</a>
-                    </h2>
-                    <span>ENTREPRISE DE CONSTRUCTION MODERNE</span>
-                    <div>Adresse : <b>Bobiel Niamey-Niger</b> </div>
-                    <div>Numéro de téléphone : <b>+227 92 08 05 05</b> </div>
-                    <div class="email">Email:
-                      <a href="mailto:contact@bellehouseniger.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">Contact@bellehouseniger.com</span></a>
-                    </div>
-                    <div class="email">Site Web:
-                      <a href="www.bellehouseniger.com"><span class="__cf_email__"> <b>bellehouseniger.com</b> </span></a>
-                    </div>
-                  </div>
-                </div>
-              </header>
+            
               <main>
             {{-- invoices list with buttons: show , download and display --}}
             <div class="row">
@@ -92,10 +64,7 @@
                       </table>
                     </div>
               </main>
-              <footer>
-                Compte Ecobank: <b>160940732001</b> Compte Orabank: <b>76495401901 <br>
-                  RCCM-NE-NIM-01-2017-A10-02845- NIF : 43391/Pl.</b>
-              </footer>
+             
             </div>
 
             <div></div>
