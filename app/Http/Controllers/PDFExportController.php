@@ -52,14 +52,52 @@ class PDFExportController extends Controller
             }
             //get the last added invoice and retrieve its number
             $lastInvoice = Invoice::latest()->first();
+            $invoices = Invoice::all();
+
             // $lastInvoice->number = 21;
+            $factures = [];
+            $devis = [];
+            if ($lastInvoice->name == 'Facture') {
+                if ($request->name == 'Facture') {
+                    foreach ($invoices as $Invoice) {
+                        if ($Invoice->name == 'Facture') {
+                            $factures[] = $Invoice;
+                        }
+                    }
+                    $lastInvoice = end($factures);
+                } else {
+                    foreach ($invoices as $Invoice) {
+                        if ($Invoice->name == 'Devis') {
+                            $devis[] = $Invoice;
+                        }
+                    }
+                    $lastInvoice = end($devis);
+                }
+            } else {
+                if ($request->name == 'Facture') {
+                    foreach ($invoices as $Invoice) {
+                        if ($Invoice->name == 'Facture') {
+                            $factures[] = $Invoice;
+                        }
+                    }
+                    $lastInvoice = end($factures);
+                } else {
+                    foreach ($invoices as $Invoice) {
+                        if ($Invoice->name == 'Devis') {
+                            $devis[] = $Invoice;
+                        }
+                    }
+                    $lastInvoice = end($devis);
+                }
+            }
             $lastInvoiceNumber = $lastInvoice ? $lastInvoice->number : 0;
+            $number = $lastInvoiceNumber + 1;
 
             // dd($lastInvoiceNumber);
             //create an instance of invoice and save to db
             $invoice = Invoice::create([
                 'name' => request('name'),
-                'number' => request('number'),
+                'number' => $number,
                 'mode_paiment' => request('mode-paiment'),
                 'montant_avanc' => request('montant_avanc'),
                 'echeance' => request('echeance'),

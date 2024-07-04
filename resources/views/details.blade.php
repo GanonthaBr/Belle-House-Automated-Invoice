@@ -74,7 +74,7 @@
                                         <h1>{{$invoice->name == 'Devis'?'Facture Proforma': 'Facture'}}</h1>
                                     </div>
                                     <div class="col invoice-details">
-                                        <h1 class="invoice-id">Numéro de facture : BH/{{$invoice->name=="Facture"?'F':'D'}}{{$invoice->number}}/{{date('Y',strtotime($invoice->created_at))}}/{{$invoice->created_at->format('m')}}</h1>
+                                        <h1 class="invoice-id">Numéro de facture : BH/{{$invoice->name=="Facture"?'F':'D'}}0{{intval($invoice->number)}}/{{date('Y',strtotime($invoice->created_at))}}/{{$invoice->created_at->format('m')}}</h1>
                                         <div class="date">Date: <b>{{$invoice->created_at->format('d/m/Y')}}</b> </div>
                                         @if ($invoice->name == "Devis")
                                             <div class="date">Délai de validité: <b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $invoice->echeance)->format('d/m/y') }}</b> </div>
@@ -98,7 +98,7 @@
                                         @if ($invoice->items)
                                         @foreach ($invoice->items as $item)
                                         <tr>
-                                            <td class="no">01</td>
+                                            <td class="no">{{ $item->quantity }}</td>
                                             <td class="text-left">
                                                 <h3><a target="_blank" href="javascript:;">{{$item->designation_title}}</a></h3>
                                                 {{$item->designation_detail??''}}
