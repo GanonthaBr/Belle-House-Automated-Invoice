@@ -33,6 +33,11 @@
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header">
+                    {{-- session message in a card --}}
+                    @if(session('message'))
+                    <div class="alert alert-success">{{session('message')}}</div>
+                    @endif
+                    
                     <h4 class="card-title
                     ">Liste des Factures</h4>
                   </div>
@@ -54,9 +59,9 @@
                             <td>{{$invoice->client_name}}</td>
                             <td>{{$invoice->created_at}}</td>
                             <td>
-                              <a href="{{route('show', $invoice->id)}}" class="btn btn-primary">Show</a>
-                              <a href="{{route('export', $invoice->id)}}" class="btn btn-success">Telecharger</a>
-                              <a href="{{route('destroy', $invoice->id)}}" class="btn btn-info">Supprimer</a>
+                              <a href="{{route('show', $invoice->id)}}" class="btn btn-primary">Afficher</a>
+                              <a href="{{route('export', $invoice->id)}}" class="btn btn-success">Télécharger</a>
+                              <a href="{{route('delete', $invoice->id)}}" class="btn btn-info">Supprimer</a>
                             </td>
                           </tr>
                           @endforeach

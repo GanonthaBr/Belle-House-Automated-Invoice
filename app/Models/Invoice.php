@@ -13,6 +13,10 @@ class Invoice extends Model
         'client_phone', 'client_mail', 'designation_title', 'designation_detail', 'quantity', 'unit_price',
     ];
 
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
     public function item()
     {
         return $this->hasMany(Item::class);

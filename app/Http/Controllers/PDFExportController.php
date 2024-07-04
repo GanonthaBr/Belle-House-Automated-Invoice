@@ -74,7 +74,20 @@ class PDFExportController extends Controller
 
     public function show($id)
     {
-        $invoice = Invoice::find($id);
+        $invoice = Invoice::with('items')->find($id);
+        if (!$invoice) {
+            abort(404);
+        }
         return view('details', compact('invoice'));
+    }
+    //delete
+    public function delete($id)
+    {
+        $invoice = Invoice::find($id);
+        if (!$invoice) {
+            abort(404);
+        }
+        $invoice->delete();
+        return redirect()->route('home')->with('message', "L'élément a été supprimé avec succès");
     }
 }

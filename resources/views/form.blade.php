@@ -37,7 +37,7 @@
                     <input type="text" class="form-control" name="client_phone" id="client_phone">
                 </div>
                 <div class="mb-3">
-                    <label for="client_mail" class="form-label">Ville:</label>
+                    <label for="client_mail" class="form-label">Email:</label>
                     <input type="text" class="form-control" name="client_mail" id="client_mail">
                 </div>
             </fieldset>
