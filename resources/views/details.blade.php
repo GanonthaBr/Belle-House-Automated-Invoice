@@ -59,24 +59,24 @@
                                 <div class="row contacts">
                                     <div class="col invoice-to">
                                         <div class="text-gray-light">Délivré à:</div>
-                                        <h2 class="to">John Doe</h2>
+                                        <h2 class="to">{{$invoice->client_name}}</h2>
                                         <div class="address">
-                                            Francophonie, Niamey - Niger
+                                            {{$invoice->client_quartier}} , {{$invoice->client_city ?? 'Niamey' }} - {{$invoice->client_country ?? 'Niger' }}
                                         </div>
                                         <div class="address">
-                                            Tel: +227 00 00 00 00
+                                            Tel: {{$invoice->client_phone}}
                                         </div>
                                         <div class="email">
-                                            <a href="mailto:contact@bellehouseniger.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">Client@gmail.com</span></a>
+                                            <a href="{{'mailto:'. $invoice->client_mail}}"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">{{$invoice->client_mail}}</span></a>
                                         </div>
                                     </div>
                                     <div class="designation">
-                                        <h1>FACTURE</h1>
+                                        <h1>{{$invoice->name}}</h1>
                                     </div>
                                     <div class="col invoice-details">
-                                        <h1 class="invoice-id">Numéro de facture : BH/F021/2024/07</h1>
-                                        <div class="date">Date: <b>01/10/2018</b> </div>
-                                        <div class="date">Délai de validité: <b>30/10/2018</b> </div>
+                                        <h1 class="invoice-id">Numéro de facture : BH/{{$invoice->name=="Facture"?'F':'D'}}{{$invoice->number}}/{{date('Y',strtotime($invoice->created_at))}}/{{$invoice->created_at->format('m')}}</h1>
+                                        <div class="date">Date: <b>{{$invoice->created_at->format('d/m/Y')}}</b> </div>
+                                        <div class="date">Délai de validité: <b>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $invoice->echeance)->format('d/m/y') }}</b> </div>
                                     </div>
                                 </div>
                                 <table>
