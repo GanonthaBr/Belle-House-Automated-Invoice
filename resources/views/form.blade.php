@@ -100,13 +100,13 @@
                             <input type="text" class="form-control" name="itemNames[]" placeholder="Designation">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="itemDetails[]" placeholder="Details">
+                            <input type="text" class="form-control" name="itemDetails[]" placeholder="Bref details Details">
                         </div>
                         <div class="mb-3">
                             <input type="number" class="form-control" name="itemQuantities[]" placeholder="Quantity">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="itemPrices[]" placeholder="Price">
+                            <input type="text" class="form-control" name="itemPrices[]" placeholder="Prix Unitaire">
                         </div>
                         <button type="button" onclick="removeItemField(this)">Remove</button>
                     </div>
@@ -126,13 +126,13 @@
                             <input type="text" class="form-control" name="itemNames[]" placeholder="Designation">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="itemDetails[]" placeholder="Details">
+                            <input type="text" class="form-control" name="itemDetails[]" placeholder="Bref details Details">
                         </div>
                         <div class="mb-3">
                             <input type="number" class="form-control" name="itemQuantities[]" placeholder="Quantity">
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="itemPrices[]" placeholder="Price">
+                            <input type="text" name="itemPrices[]" placeholder="Prix Unitaire">
                         </div>
         <button type="button" onclick="removeItemField(this)">Remove</button>
     `;

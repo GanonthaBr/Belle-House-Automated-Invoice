@@ -4,20 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use Illuminate\Http\Request;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
+
 
 class PDFExportController extends Controller
 {
     public function export($id)
     {
-        $invoice = Invoice::find($id);
-        $view = view('details', compact('invoice'))->render();
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        return $pdf->stream();
-        // Or ->stream() to display inline
+        // set maximum execution time
+        ini_set('max_execution_time', 3000);
+        $invoiceData = Invoice::find($id); // Assuming you have an Invoice model
+        if (!$invoiceData) {
+            abort(404);
+        }
+        $data = ['invoice' => $invoiceData];
+        $pdf = PDF::loadView('pdf.invoice', $data);
+        return $pdf->download('invoice.pdf');
     }
     public function create()
     {
@@ -119,10 +125,7 @@ class PDFExportController extends Controller
                 ]);
             }
             return redirect()->route('show', ['id' => $invoice->id]);
-        } catch (ValidationException $e) {
-            dd($e);
         } catch (\Throwable $e) {
-            dd($e);
             return redirect()->route('home')->with('error', 'Une erreur est survenue',);
         }
     }
