@@ -18,7 +18,6 @@
         <div class="card">
             <div class="card-body">
                 <div id="invoice">
-                   
                     <div class="invoice overflow-auto">
                         <div class="header-div">
                             <header>
@@ -81,15 +80,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-
                                         {{-- $blog->comments as $comment --}}
                                         @if ($invoice->items)
                                         @foreach ($invoice->items as $item)
                                         <tr>
                                             <td class="no">{{ $item->quantity }}</td>
-                                            <td class="text-left">
-                                                <h3><a target="_blank" href="javascript:;">{{$item->designation_title}}</a></h3>
+                                            <td class="text-left"  style="min-width: 100px;">
+                                                <h4>{{$item->designation_title}}</h4>
                                                 {{$item->designation_detail??''}}
                                             </td>
                                             <td class="qty">{{$item->quantity}}</td>
@@ -98,9 +95,6 @@
                                         </tr>
                                         @endforeach
                                         @endif
-
-
-
                                     </tbody>
                                     <tfoot>
                                         <!-- Do the maths -->
@@ -132,11 +126,6 @@
                                             <td colspan="2">Montant Total TTC</td>
                                             <td> {{ number_format($totalAfterTax, 0, '.', ' ') }} FCFA</b> </td>
                                         </tr>
-                                        {{-- <tr>
-                                            <td colspan="2"></td>
-                                            <td colspan="2">Montant déjà versé</td>
-                                            <td> <b>{{$invoice->montant_avanc ?? 0}}</b> </td>
-                                        </tr> --}}
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">Net à payer</td>
@@ -149,20 +138,14 @@
                                     <div class="title">NOTE Importante!</div>
                                     <div class="notice">
                                         <b> Mode de règlement </b> {{$invoice->mode_paiment}} <br>
-                                        {{-- <b>Conditions de règlement : </b>APRES LIVRAISON <br>
-                                        <b> Date limite de règlement :</b> 24H APRES LIVRAISON <br> --}}
                                     </div>
                                 </div>
-
-
                             </main>
                             <footer>
                                <span> Compte Ecobank: <b>160940732001</b> Compte Orabank: <b>76495401901 </b>Compte BIA:  <b>61001260006</b></span> <br>
                                     RCCM-NE-NIM-01-2017-A10-02845- NIF : 43391/P.</b>
                             </footer>
                         </div>
-
-
                     </div>
                 </div>
             </div>
