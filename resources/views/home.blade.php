@@ -56,6 +56,7 @@
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
+                      @if ($invoices->count()>0)
                       <table class="table table-bordered">
                         <thead>
                           <tr>
@@ -80,6 +81,9 @@
                           @endforeach
                         </tbody>
                       </table>
+                      @else
+                      <div class="alert alert-info">Aucune facture n'est Disponible</div>
+                      @endif
                       {{-- add new record--}}
                       <a href="{{route('create')}}" class="btn btn-primary">Ajouter une nouvelle facture</a>
                     </div>

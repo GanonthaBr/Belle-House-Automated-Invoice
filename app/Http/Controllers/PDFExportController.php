@@ -49,6 +49,7 @@ class PDFExportController extends Controller
             //contruct array of item details
             $items = [];
             for ($i = 0; $i < count(request('itemNames')); $i++) {
+
                 $items[] = [
                     'designation_title' => request('itemNames')[$i],
                     'quantity' => request('itemQuantities')[$i],
@@ -116,6 +117,8 @@ class PDFExportController extends Controller
             ]);
             // dd($request->all());
             //create item an store in the db, looping through all the items in the array
+
+
             foreach ($items as $item) {
                 $invoice->item()->create([
                     'designation_title' => $item['designation_title'],
