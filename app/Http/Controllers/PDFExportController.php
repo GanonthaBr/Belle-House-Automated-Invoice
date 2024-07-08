@@ -16,14 +16,23 @@ class PDFExportController extends Controller
     public function export($id)
     {
         // set maximum execution time
-        ini_set('max_execution_time', 3000);
-        $invoiceData = Invoice::find($id); // Assuming you have an Invoice model
-        if (!$invoiceData) {
-            abort(404);
+        try {
+            ini_set('max_execution_time', 3000);
+            $invoiceData = Invoice::find($id); // Assuming you have an Invoice model
+            if (!$invoiceData) {
+                abort(404);
+            }
+            //get image path
+            $imagePath = public_path('images/logo.png');
+            $image = "data:image/png;base64," . base64_encode(file_get_contents($imagePath));
+
+
+            $data = ['invoice' => $invoiceData, 'image' => $image];
+            $pdf = PDF::loadView('pdf.invoice', $data);
+            return $pdf->download('invoice.pdf');
+        } catch (\Throwable $e) {
+            return redirect()->route('home')->with('error', 'Une erreur est survenue');
         }
-        $data = ['invoice' => $invoiceData];
-        $pdf = PDF::loadView('pdf.invoice', $data);
-        return $pdf->download('invoice.pdf');
     }
     public function create()
     {

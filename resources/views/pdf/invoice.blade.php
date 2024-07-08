@@ -24,7 +24,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <a href="#">
-                                            <img src="{{public_path('images/logo.png')}}" width="200" height="160" alt="logo" />
+                                            <img src="{{$image}}" width="200" height="160" alt="logo" />
                                         </a>
                                     </div>
                                     <div class="col company-details">
