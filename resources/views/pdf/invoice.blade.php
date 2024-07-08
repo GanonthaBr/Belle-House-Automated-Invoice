@@ -343,31 +343,7 @@ th{
                                         </tr>
                                     </tbody>
                                 </table>
-                                <!--<div class="container">-->
-                                <!--<div class="row"> -->
-                                <!--     <div class="col">-->
-                                <!--        <a href="#">-->
-                                            <!--src="{{ public_path('assets/fotoKue/kue-fazril.jpg') }}"-->
-                                <!--            <img src="{{$image}}" width="150" height="120" alt="logo" />-->
-                                <!--        </a>-->
-                                <!--    </div>-->
-                                <!--    <div class="col company-details">-->
-                                      
-                                <!--        <h2 class="name">-->
-                                <!--            <a target="_blank" href="#">  <b>BELLE HOUSE</b> </a>-->
-                                <!--        </h2>-->
-                                <!--        <span>ENTREPRISE DE CONSTRUCTION MODERNE</span>-->
-                                <!--        <div>Adresse : <b>Bobiel Niamey-Niger</b> </div>-->
-                                <!--        <div>Numéro de téléphone : <b>+227 92 08 05 05</b> </div>-->
-                                <!--        <div class="email">Email:-->
-                                <!--            <a href="mailto:contact@bellehouseniger.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">Contact@bellehouseniger.com</span></a>-->
-                                <!--        </div>-->
-                                <!--        <div class="email">Site Web:-->
-                                <!--            <a href="www.bellehouseniger.com"><span class="__cf_email__"> <b>bellehouseniger.com</b> </span></a>-->
-                                <!--        </div>-->
-                                <!--    </div>-->
-                                <!--</div>-->
-                                <!--</div>-->
+                            
                             </header>
                             <main>
                                 <div class="row contacts">
@@ -406,9 +382,6 @@ th{
                                         </tr>
                                     </thead>
                                     <tbody>
-
-
-                                        {{-- $blog->comments as $comment --}}
                                         @if ($invoice->items)
                                         @foreach ($invoice->items as $item)
                                         <tr>
@@ -423,9 +396,6 @@ th{
                                         </tr>
                                         @endforeach
                                         @endif
-
-
-
                                     </tbody>
                                     <tfoot>
                                         <!-- Do the maths -->
