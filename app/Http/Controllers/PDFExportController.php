@@ -38,6 +38,7 @@ class PDFExportController extends Controller
     {
         return view('form');
     }
+    //store
     public function store(Request $request)
     {
         try {
@@ -141,7 +142,15 @@ class PDFExportController extends Controller
             return redirect()->route('home')->with('error', 'Une erreur est survenue',);
         }
     }
-
+    //edit
+    public function edit($id)
+    {
+        $invoice = Invoice::with('items')->find($id);
+        if (!$invoice) {
+            abort(404);
+        }
+        return view('edit', compact('invoice'));
+    }
     public function show($id)
     {
         $invoice = Invoice::with('items')->find($id);

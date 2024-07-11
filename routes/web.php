@@ -12,6 +12,7 @@ Route::get('/export/{id}', [PDFExportController::class, 'export'])->name('export
 Route::get('/create', [PDFExportController::class, 'create'])->name('create'); //show form
 Route::post('/store', [PDFExportController::class, 'store'])->name('store'); //add new
 Route::get('/invoice/{id}', [PDFExportController::class, 'show'])->name('show'); //display
+Route::get('/edit/{id}', [PDFExportController::class, 'edit'])->name('edit'); //edit
 
 //remove
 Route::get('/delete/{id}', [PDFExportController::class, 'delete'])->name('delete');
