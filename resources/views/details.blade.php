@@ -26,6 +26,9 @@
                             <a type="button" href="{{route('export',$invoice->id)}}" class="btn btn-danger">
                                 <i class="fa fa-file-pdf-o"></i> Exporter en PDF
                             </a>
+                            <a type="button" href="{{route('edit',$invoice->id)}}" class="btn btn-danger">
+                                <i class="fa fa-file-pdf-o"></i> Modifier
+                            </a>
 
                         </div>
                         <hr />

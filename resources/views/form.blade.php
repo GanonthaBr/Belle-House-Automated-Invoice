@@ -75,7 +75,7 @@
                     <label class="form-check-label" for="en_liquide"> PAR LIQUIDE</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="mode-paiment" id="par_banque" value="PAR VERSEMENT" checked>
+                    <input class="form-check-input" type="radio" name="mode-paiment" id="par_banque" value="PAR VERSEMENT">
                     <label class="form-check-label" for="par_banque"> PAR VERSEMENT</label>
                 </div>
                 <div class="form-check">
@@ -86,21 +86,7 @@
                     <label for="echeance" class="form-label">Echeance:</label>
                     <input type="date" class="form-control" name="echeance" id="echeance">
                 </div>
-                {{-- <div class="mb-3">
-
-                    <label for="number" class="form-label">Numero de Facture:</label>
-
-                    <input type="text" class="form-control" name="number" id="number">
-
-                </div> --}}
-
-                {{-- <div class="mb-3">
-
-                    <label for="montant_avanc" class="form-label">Montant avancé:</label>
-
-                    <input type="text" class=" form-control" name="montant_avanc" id="montant_avanc">
-
-                </div> --}}
+              
             </fieldset>
             <fieldset>
                 <legend>Liste des Elements</legend>
