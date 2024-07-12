@@ -408,7 +408,11 @@ th{
                                         @endphp
                                         @endforeach
                                         @php
-                                        $isb = 0.02 * $totalBeforeTax;
+                                        $isb = 0;
+                                        if($invoice->taxe){
+                                            $isb = 0.02 * $totalBeforeTax;
+                                        }
+                                
                                         $totalAfterTax = $totalBeforeTax - $isb;
                                         $restToPay = $totalAfterTax - $invoice->montant_avanc;
                                         @endphp
