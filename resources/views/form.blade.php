@@ -89,7 +89,7 @@
                 <div class="form-check">
                     <label for="mode-paiment" class="form-label"> <b>Section Taxe</b> </label> <br>
                     <label class="form-check-label" for="tax">TAXE</label>
-                    <input type="checkbox" id="tax" name="tax[]" value="1" class="form-check-input">
+                    <input type="radio" id="tax" name="tax[]" value="OUI" class="form-check-input">
                 </div>
               
             </fieldset>

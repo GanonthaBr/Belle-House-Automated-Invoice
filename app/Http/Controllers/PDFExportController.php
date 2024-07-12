@@ -53,7 +53,8 @@ class PDFExportController extends Controller
                 'client_phone' => 'nullable',
                 'client_mail' => 'nullable',
                 'montant_avanc' => 'nullable',
-                'mode_paiment' => 'nullable'
+                'mode_paiment' => 'nullable',
+                'tax' => 'boolean'
             ]);
 
             //contruct array of item details
@@ -122,6 +123,7 @@ class PDFExportController extends Controller
                 'client_country' => request('client_country'),
                 'client_phone' => request('client_phone'),
                 'client_mail' => request('client_mail'),
+                'tax' => request('tax')
             ]);
             //create item an store in the db, looping through all the items in the array
             foreach ($items as $item) {
