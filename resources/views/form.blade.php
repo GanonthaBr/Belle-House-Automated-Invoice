@@ -71,8 +71,8 @@
                 </div>
                 <div class="form-check">
                     <label for="mode-paiment" class="form-label"> <b>Mode de Paiement</b> </label> <br>
-                    <input class="form-check-input" type="radio" name="mode-paiment" id="en_liquide" value="PAR LIQUIDE">
-                    <label class="form-check-label" for="en_liquide"> PAR LIQUIDE</label>
+                    <input class="form-check-input" type="radio" name="mode-paiment" id="en_liquide" value="En ESPÈCES">
+                    <label class="form-check-label" for="en_liquide"> EN ESPECES</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="mode-paiment" id="par_banque" value="PAR VERSEMENT">
@@ -85,6 +85,11 @@
                 <div class="mb-3">
                     <label for="echeance" class="form-label">Echeance:</label>
                     <input type="date" class="form-control" name="echeance" id="echeance">
+                </div>
+                <div class="form-check">
+                    <label for="mode-paiment" class="form-label"> <b>Section Taxe</b> </label> <br>
+                    <label class="form-check-label" for="tax">TAXE</label>
+                    <input type="checkbox" id="tax" name="tax[]" value="1" class="form-check-input">
                 </div>
               
             </fieldset>
