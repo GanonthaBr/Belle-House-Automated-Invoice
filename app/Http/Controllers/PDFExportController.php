@@ -44,6 +44,7 @@ class PDFExportController extends Controller
         try {
             $request->validate([
                 'name' => 'required',
+                'objet' => 'nullable',
                 'number' => 'nullable',
                 'echeance' => 'required',
                 'client_name' => 'nullable',
@@ -114,6 +115,7 @@ class PDFExportController extends Controller
             $invoice = Invoice::create([
                 'name' => request('name'),
                 'number' => $number,
+                'objet' => request('objet'),
                 'mode_paiment' => request('mode-paiment'),
                 'montant_avanc' => request('montant_avanc'),
                 'echeance' => request('echeance'),
@@ -154,6 +156,7 @@ class PDFExportController extends Controller
         try {
             $request->validate([
                 'name' => 'required',
+                'objet' => 'nullable',
                 'number' => 'nullable',
                 'echeance' => 'required',
                 'client_name' => 'nullable',
@@ -226,6 +229,7 @@ class PDFExportController extends Controller
             $invoice->update([
                 'name' => request('name'),
                 'number' => $number,
+                'objet' => request('objet'),
                 'mode_paiment' => request('mode-paiment'),
                 'montant_avanc' => request('montant_avanc'),
                 'echeance' => request('echeance'),
