@@ -64,6 +64,12 @@
                     </label>
                 </div>
                 <div class="form-check">
+                    <lable class="form-label" for="objet" >
+                        <b>Objet</b>
+                    </lable>
+                    <input type="text" class="form-control" name="objet" id="objet">
+                </div>
+                <div class="form-check">
                     <input class="form-check-input" type="radio" name="name" id="Devis" value="Devis" checked>
                     <label class="form-check-label" for="Devis">
                         Facture Proforma
