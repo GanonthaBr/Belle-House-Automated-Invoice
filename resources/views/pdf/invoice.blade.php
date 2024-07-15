@@ -2,8 +2,6 @@
 
 <html lang="en">
 
-
-
 <head>
 
     <meta charset="utf-8" />
@@ -172,7 +170,7 @@
     .invoice .company-details .name a {
 
         color: #61a1d6;
-        font-size: 14px;
+        font-size: 27px;
 
     }
 
@@ -231,9 +229,9 @@
 
     }
 
-    .designation h1 {
-
-        padding: 3px 6px;
+    .designation h2 {
+        font-size: 20px;
+        padding: 2px 3px;
 
         border: 1px solid #61a1d6;
 
@@ -601,19 +599,9 @@
 <body>
 
     <div class="">
-
-        <!--<div class="card">-->
-
-        <!--    <div class="card-body">-->
-
         <div id="">
-
-
-
             <div class="invoice overflow-auto">
-
                 <div class="header-div">
-
                     <header class="header-content">
 
                         <table>
@@ -639,7 +627,7 @@
 
                                                 <!--src="{{ public_path('assets/fotoKue/kue-fazril.jpg') }}"-->
 
-                                                <img src="{{$image}}" width="120" height="100" alt="logo" />
+                                                <img src="{{$image}}" width="140" height="105" alt="logo" />
 
                                             </a>
 
@@ -659,21 +647,21 @@
 
                                             </h2>
 
-                                            <span>ENTREPRISE DE CONSTRUCTION MODERNE</span>
+                                            <b style="font-size: 9px;"> ENTREPRISE DE CONSTRUCTION MODERNE </b>
 
-                                            <div>Adresse : <b>Bobiel Niamey-Niger</b> </div>
+                                            <div>Adresse : <span style="color:#61a1d6">Bobiel Niamey-Niger</span> </div>
 
-                                            <div>Numéro de téléphone : <b>+227 92 08 05 05</b> </div>
+                                            <div>Numéro de téléphone : <span style="color:#61a1d6">+227 92 08 50 50</span> </div>
 
                                             <div class="email">Email:
 
-                                                <a href="mailto:contact@bellehouseniger.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1">Contact@bellehouseniger.com</span></a>
+                                                <a href="mailto:contact@bellehouseniger.com"><span class="__cf_email__" data-cfemail="cca6a3a4a28ca9b4ada1bca0a9e2afa3a1" style="color:#61a1d6">Contact@bellehouseniger.com</span></a>
 
                                             </div>
 
                                             <div class="email">Site Web:
 
-                                                <a href="www.bellehouseniger.com"><span class="__cf_email__"> <b>bellehouseniger.com</b> </span></a>
+                                                <a href="www.bellehouseniger.com"><span class="__cf_email__"> <span style="color:#61a1d6">bellehouseniger.com</span> </span></a>
 
                                             </div>
 
@@ -686,9 +674,6 @@
                             </tbody>
 
                         </table>
-
-
-
                     </header>
 
                     <main>
@@ -697,9 +682,9 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th style="width: 40%;"></th>
+                                        <th style="width: 35%;"></th>
                                         <th style="width: 30%;"></th>
-                                        <th style="width: 30%;"></th>
+                                        <th style="width: 35%;"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -734,14 +719,14 @@
                                         <td>
                                             <div class="designation">
 
-                                                <h1>{{$invoice->name == 'Devis'?'Facture Proforma': 'Facture'}}</h1>
+                                                <h2>{{$invoice->name == 'Devis'?'Facture Proforma': 'Facture'}}</h2>
 
                                             </div>
                                         </td>
                                         <td>
                                             <div class="col invoice-details">
 
-                                                <h1 class="invoice-id">Numéro de facture : BH/{{$invoice->name=="Facture"?'F':'D'}}0{{intval($invoice->number)}}/{{date('Y',strtotime($invoice->created_at))}}/{{$invoice->created_at->format('m')}}</h1>
+                                                <h1 class="invoice-id" style="font-size:14px">Numéro de facture : BH/{{$invoice->name=="Facture"?'F':'D'}}0{{intval($invoice->number)}}/{{date('Y',strtotime($invoice->created_at))}}/{{$invoice->created_at->format('m')}}</h1>
 
                                                 <div class="date">Date: <b>{{$invoice->created_at->format('d/m/Y')}}</b> </div>
 
@@ -764,7 +749,11 @@
 
 
                         </div>
-
+                        <div class="row subject">
+                            <div class="col-12">
+                                <p> <b style="text-decoration: underline;">Object:</b> Une facture pour un test!</p>
+                            </div>
+                        </div>
                         <table style="width: 100%; table-layout: fixed; ">
 
                             <thead>
@@ -777,7 +766,7 @@
 
                                     <th class="text-right" style="width: 15%; font-weight:bold ">Quantité</th>
 
-                                    <th class="text-right" style="width: 20%; font-weight:bold ">Prix Unitaire HT <br> (FCFA)</th>
+                                    <th class="text-right" style="width: 20%; font-weight:bold; text-align:center">Prix Unitaire HT <br> (FCFA)</th>
 
                                     <th class="text-right" style="width: 20%; font-weight:bold ">Prix Total HT <br> (FCFA)</th>
 
@@ -853,14 +842,14 @@
 
                                 @endforeach
 
-                                 @php
-                                        $isb = 0;
-                                        if($invoice->tax == "oui"){
-                                            $isb = 0.02 * $totalBeforeTax;
-                                        }
-                                
-                                        $totalAfterTax = $totalBeforeTax - $isb;
-                                        $restToPay = $totalAfterTax - $invoice->montant_avanc;
+                                @php
+                                $isb = 0;
+                                if($invoice->tax == "oui"){
+                                $isb = 0.02 * $totalBeforeTax;
+                                }
+
+                                $totalAfterTax = $totalBeforeTax - $isb;
+                                $restToPay = $totalAfterTax - $invoice->montant_avanc;
                                 @endphp
 
                                 <tr>
