@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Invoice;
-use Illuminate\Http\Request;
-// use Barryvdh\DomPDF\Facade\Pdf;
 use Dompdf\Dompdf;
+use App\Models\Invoice;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Decharge;
+use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
@@ -275,9 +276,55 @@ class PDFExportController extends Controller
         return redirect()->route('home')->with('message', "L'élément a été supprimé avec succès");
     }
     // Decharge
-    public function decharge()
+    // public function decharge()
+    // {
+    //     $invoices = Invoice::all();
+    //     return view('decharge', compact('invoices'));
+    // }
+    public function dechargeshow($id)
     {
-        $invoices = Invoice::all();
-        return view('decharge', compact('invoices'));
+        $decharge = Decharge::find($id);
+        if (!$decharge) {
+            abort(404);
+        }
+        return view('decharge', compact('decharge'));
+    }
+    public function dechargecreate()
+    {
+        return view('dechargeform');
+    }
+    public function dechargestore(Request $request)
+    {
+        try {
+            $request->validate([
+                'name' => 'nullable',
+                'client_name' => 'nullable',
+                'amout_received' => 'nullable',
+                'motif' => 'nullable',
+                'number' => 'nullable',
+            ]);
+            $lastDechargeNumber = 0;
+            //get the last added invoice and retrieve its number
+            $lastdecharge = Decharge::latest()->first();
+
+            if ($lastdecharge) {
+                $lastDechargeNumber = $lastdecharge->number;
+            } else {
+                $lastDechargeNumber = 7;
+            }
+            // $lastDechargeNumber = $lastdecharge ? $lastdecharge->number : 0;
+            $number = $lastDechargeNumber + 1;
+            $decharge = Decharge::create([
+                'name' => request('name'),
+                'client_name' => request('client_name'),
+                'amout_received' => request('amout_received'),
+                'motif' => request('motif'),
+                'number' => $number,
+            ]);
+            return redirect()->route('dechargeshow', ['id' => $decharge->id]);
+            // return redirect()->route('decharge')->with('message', "L'élément a été ajouté avec succès");
+        } catch (\Throwable $e) {
+            return redirect()->route('home')->with('error', 'Une erreur est survenue',);
+        }
     }
 }
