@@ -3,8 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Receipt</title>
-        <link rel="stylesheet" href="stylesheet.css" />
+        <title>Decharge</title>
+        {{-- Favicon --}}
+        <link href="{{asset('images/logo.png')}}" rel="icon" />
+        <link rel="stylesheet" href="{{asset('stylesheet.css')}}" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -28,7 +30,7 @@
         <div class="receipt">
             <div class="header">
                 <div class="logo">
-                    <img src="images/logo.png" alt="Belle House Logo" />
+                    <img src="{{asset('images/logo.png')}}" alt="Belle House Logo" />
                 </div>
                 <div class="company-details">
                     <h1>BELLE HOUSE CONSTRUCTION MODERNE</h1>
@@ -49,18 +51,18 @@
             </div>
             <div class="receipt-details">
                 <div class="number">
-                    <p>Reçu N<sup>o</sup> 0000007</p>
+                    <p>Reçu N<sup>o</sup> {{$decharge->number}} </p>
                 </div>
                 <div class="date">
-                    <p>Niamey le 30/08/2024</p>
+                    <p>Niamey le <b>{{$decharge->created_at->format('d/m/Y')}}</b></p>
                 </div>
             </div>
             <div class="body">
                 <p>
                     Je soussigné <strong>Mr AGABA Moussa,</strong> Directeur Général à Belle
                     House,atteste avoir reçu une somme de
-                    <strong>Un million CFA (1,000,000 f)</strong> de Mr/Mme <strong>Fati Maman</strong> pour
-                    <strong>la construction d'un immeuble R+2 sur plan</strong>.
+                    <strong> {{$decharge->amout_received}} FCFA</strong> de Mr/Mme <strong> {{$decharge->client_name}} </strong> pour
+                    <strong> {{$decharge->motif}} </strong>.
                 </p>
             </div>
             <div class="bottom">
@@ -69,7 +71,7 @@
                     <div class="">Fait pour servir et valoir ce que de droit</div>
                 </div>
                 <div class="contact">
-                    <div>+227 92 08 50 50 </div><div>  +227 99 08 50 50</div>
+                    <div> <b>+227 92 08 50 50</b> </div><div> <b>+227 99 08 50 50</b> </div>
                 </div>
                
             </div>

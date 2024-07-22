@@ -289,7 +289,7 @@ class PDFExportController extends Controller
         }
         return view('decharge', compact('decharge'));
     }
-    public function dechargecreate()
+    public function createdecharge()
     {
         return view('dechargeform');
     }

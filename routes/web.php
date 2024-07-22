@@ -21,5 +21,5 @@ Route::get('/delete/{id}', [PDFExportController::class, 'delete'])->name('delete
 // Decharge
 Route::get('/decharge', [PDFExportController::class, 'decharge'])->name('decharge');
 Route::post('/dechargestore', [PDFExportController::class, 'dechargestore'])->name('dechargestore'); //add new
-Route::get('/create', [PDFExportController::class, 'dechargecreate'])->name('createdecharge');
+Route::get('/createdecharge', [PDFExportController::class, 'createdecharge'])->name('createdecharge');
 Route::get('/decharge/{id}', [PDFExportController::class, 'dechargeshow'])->name('dechargeshow'); //dowload
