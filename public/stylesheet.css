@@ -13,8 +13,8 @@ body {
 .receipt {
     background: #ffffff;
     padding: 20px;
-    border: 2px solid #000;
-    width: 600px;
+    border: 2px solid #61a1d6;
+    width: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -22,9 +22,14 @@ body {
 .footer {
     text-align: center;
 }
-
+.header {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .logo img {
-    width: 100px;
+    width: 140px;
 }
 
 .company-details h1 {
@@ -44,6 +49,9 @@ body {
 }
 
 .receipt-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 20px 0;
     font-size: 14px;
 }
@@ -61,21 +69,5 @@ body {
 
 .footer .contact {
     margin: 10px 0;
-    font-size: 14px;
-}
-
-.signature {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.signature img {
-    width: 80px;
-    margin-right: 10px;
-}
-
-.signature p {
-    margin: 0;
     font-size: 14px;
 }

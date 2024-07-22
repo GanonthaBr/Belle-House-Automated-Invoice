@@ -48,21 +48,18 @@
                 </div>
             </div>
             <div class="receipt-details">
-                <p>Reçu N<sup>o</sup> 0000007</p>
-                <p>Niamey le 30/08/2024</p>
+                <div class="number">
+                    <p>Reçu N<sup>o</sup> 0000007</p>
+                </div>
+                <div class="date">
+                    <p>Niamey le 30/08/2024</p>
+                </div>
             </div>
             <div class="body">
                 <p>
                     Je soussigné Mr AGABA Moussa Directeur Général à belle
-                    House,
-                </p>
-                <p>
-                    atteste avoir reçu une somme de
-                    <strong>Un million CFA (1,000,000 f)</strong>
-                </p>
-                <p>de Mr/Mme <strong>Fati Maman</strong></p>
-                <p>
-                    pour
+                    House,atteste avoir reçu une somme de
+                    <strong>Un million CFA (1,000,000 f)</strong> de Mr/Mme <strong>Fati Maman</strong> pour
                     <strong>la construction d'un immeuble R+2 sur plan</strong>.
                 </p>
             </div>
