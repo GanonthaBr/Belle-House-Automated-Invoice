@@ -1,0 +1,81 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.receipt {
+    background: #ffffff;
+    padding: 20px;
+    border: 2px solid #000;
+    width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header,
+.footer {
+    text-align: center;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.company-details h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #61a1d6;
+}
+.roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    color: #61a1d6;
+}
+.company-details p {
+    margin: 2px 0;
+    font-size: 12px;
+}
+
+.receipt-details {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.body {
+    font-family: "Playwrite PE", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.body strong {
+    font-weight: bold;
+}
+
+.footer .contact {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.signature {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signature img {
+    width: 80px;
+    margin-right: 10px;
+}
+
+.signature p {
+    margin: 0;
+    font-size: 14px;
+}

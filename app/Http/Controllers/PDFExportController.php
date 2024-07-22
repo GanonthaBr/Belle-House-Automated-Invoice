@@ -274,4 +274,10 @@ class PDFExportController extends Controller
         $invoice->delete();
         return redirect()->route('home')->with('message', "L'élément a été supprimé avec succès");
     }
+    // Decharge
+    public function decharge()
+    {
+        $invoices = Invoice::all();
+        return view('decharge', compact('invoices'));
+    }
 }

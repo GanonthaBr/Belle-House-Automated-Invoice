@@ -17,3 +17,6 @@ Route::put('/update/{id}', [PDFExportController::class, 'update'])->name('update
 
 //remove
 Route::get('/delete/{id}', [PDFExportController::class, 'delete'])->name('delete');
+
+// Decharge
+Route::get('/decharge', [PDFExportController::class, 'decharge'])->name('decharge');
