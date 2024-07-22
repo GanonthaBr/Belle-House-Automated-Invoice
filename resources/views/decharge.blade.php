@@ -41,10 +41,10 @@
                         Photographie Bâtiment- Aménagement- Jardinage
                     </p>
                     <p>
-                        Email: contact@bellehouseniger.com | Site:
-                        www.bellehouseniger.com
+                        Email: <a href="mailto@contact@bellehouseniger.com ">contact@bellehouseniger.com </a>| Site:
+                       <a href=" www.bellehouseniger.com"> www.bellehouseniger.com</a>
                     </p>
-                    <p>RCCM-NI-NIA-2017-A-2845 NIF: 43391/P</p>
+                    <p class="rccm-nif" >RCCM-NI-NIA-2017-A-2845 NIF: 43391/P</p>
                 </div>
             </div>
             <div class="receipt-details">
@@ -57,7 +57,7 @@
             </div>
             <div class="body">
                 <p>
-                    Je soussigné Mr AGABA Moussa Directeur Général à belle
+                    Je soussigné <strong>Mr AGABA Moussa,</strong> Directeur Général à Belle
                     House,atteste avoir reçu une somme de
                     <strong>Un million CFA (1,000,000 f)</strong> de Mr/Mme <strong>Fati Maman</strong> pour
                     <strong>la construction d'un immeuble R+2 sur plan</strong>.

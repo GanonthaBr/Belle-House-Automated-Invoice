@@ -36,6 +36,7 @@ body {
     font-size: 22px;
     margin: 0;
     color: #61a1d6;
+    border: 1px solid #61a1d6;
 }
 .roboto-light-italic {
     font-family: "Roboto", sans-serif;
@@ -47,7 +48,16 @@ body {
     margin: 2px 0;
     font-size: 12px;
 }
+.company-details a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
 
+.rccm-nif {
+    letter-spacing: 2px;
+    font-weight: bold;
+}
 .receipt-details {
     display: flex;
     flex-direction: row;
