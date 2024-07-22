@@ -63,14 +63,18 @@
                     <strong>la construction d'un immeuble R+2 sur plan</strong>.
                 </p>
             </div>
+            <div class="bottom">
             <div class="footer">
-                <p class="roboto-light-italic">
-                    Fait pour servir et valoir ce que de droit
-                </p>
+                <div class="roboto-light-italic signature">
+                    <div class="">Fait pour servir et valoir ce que de droit</div>
+                </div>
                 <div class="contact">
-                    <p>+227 92 08 50 50 | +227 99 08 50 50</p>
+                    <div>+227 92 08 50 50 </div><div>  +227 99 08 50 50</div>
                 </div>
                
+            </div>
+            <div class="stamp"></div>
+             Signature
             </div>
         </div>
     </body>
