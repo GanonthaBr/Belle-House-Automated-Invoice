@@ -73,10 +73,7 @@
                 <div class="contact">
                     <p>+227 92 08 50 50 | +227 99 08 50 50</p>
                 </div>
-                <div class="signature">
-                    <img src="stamp.png" alt="Stamp" />
-                    <p>Directeur Général</p>
-                </div>
+               
             </div>
         </div>
     </body>
