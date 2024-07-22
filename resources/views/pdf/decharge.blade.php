@@ -30,21 +30,6 @@
     </head>
     <body>
         <div class="receipt">
-            <div class="toolbar hidden-print">
-                        <div class="text-end">
-                            <a type="button" href="{{route('home')}}" class="btn btn-dark">
-                                <i class="fa fa-print"></i> Retour
-                            </a>
-                            <a type="button" href="{{route('export',$decharge->id)}}" class="btn btn-danger">
-                                <i class="fa fa-file-pdf-o"></i> Exporter en PDF
-                            </a>
-                            <a type="button" href="{{route('edit',$decharge->id)}}" class="btn btn-info">
-                                <i class="fa fa-file-pdf-o"></i> Modifier
-                            </a>
-
-                        </div>
-                        <hr />
-                    </div>
             <div class="header">
                 <div class="logo">
                     <img src="{{asset('images/logo.png')}}" alt="Belle House Logo" />
