@@ -33,7 +33,7 @@
             
             <div class="header">
                 <div class="logo">
-                    <img src="{{asset('images/logo.png')}}" alt="Belle House Logo" />
+                    <img src="{{$image}}" alt="Belle House Logo" />
                 </div>
                 <div class="company-details">
                     <h1>BELLE HOUSE CONSTRUCTION MODERNE</h1>

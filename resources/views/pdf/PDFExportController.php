@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Dompdf\Dompdf;
 use App\Models\Invoice;
-// use Barryvdh\DomPDF\Facade\Pdf;
-use App\Models\Decharge;
 use Illuminate\Http\Request;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
@@ -27,27 +26,10 @@ class PDFExportController extends Controller
             $imagePath = public_path('images/logo.png');
             $image = "data:image/png;base64," . base64_encode(file_get_contents($imagePath));
 
+
             $data = ['invoice' => $invoiceData, 'image' => $image];
             $pdf = PDF::loadView('pdf.invoice', $data);
             return $pdf->download('invoice.pdf');
-        } catch (\Throwable $e) {
-            return redirect()->route('home')->with('error', 'Une erreur est survenue');
-        }
-    }
-    public function dechargepdf($id)
-    {
-        try {
-            ini_set('max_execution_time', 3000);
-            $dechargeData = Decharge::find($id); // Assuming you have an Invoice model
-            if (!$dechargeData) {
-                abort(404);
-            }
-            //get image path
-            $imagePath = public_path('images/logo.png');
-            $image = "data:image/png;base64," . base64_encode(file_get_contents($imagePath));
-            $data = ['decharge' => $dechargeData, 'image' => $image];
-            $pdf = PDF::loadView('pdf.decharge', $data);
-            return $pdf->download('decharge.pdf');
         } catch (\Throwable $e) {
             return redirect()->route('home')->with('error', 'Une erreur est survenue');
         }
@@ -62,8 +44,8 @@ class PDFExportController extends Controller
         try {
             $request->validate([
                 'name' => 'required',
-                'objet' => 'nullable',
                 'number' => 'nullable',
+                'objet' => 'nullable',
                 'echeance' => 'required',
                 'client_name' => 'nullable',
                 'client_quartier' => 'nullable',
@@ -73,10 +55,14 @@ class PDFExportController extends Controller
                 'client_mail' => 'nullable',
                 'montant_avanc' => 'nullable',
                 'mode_paiment' => 'nullable',
-                'tax' => 'boolean'
-            ]);
+                'tax' => 'nullable|string'
 
-            //contruct array of item details
+            ]);
+            // dd($request->all());
+            // Convert the checkbox value to a boolean
+            // $validatedData['tax'] = $request->has('tax');
+
+
             $items = [];
             for ($i = 0; $i < count(request('itemNames')); $i++) {
 
@@ -156,6 +142,7 @@ class PDFExportController extends Controller
             }
             return redirect()->route('show', ['id' => $invoice->id]);
         } catch (\Throwable $e) {
+            dd($e);
             return redirect()->route('home')->with('error', 'Une erreur est survenue',);
         }
     }
@@ -174,8 +161,8 @@ class PDFExportController extends Controller
         try {
             $request->validate([
                 'name' => 'required',
-                'objet' => 'nullable',
                 'number' => 'nullable',
+                'objet' => 'nullable',
                 'echeance' => 'required',
                 'client_name' => 'nullable',
                 'client_quartier' => 'nullable',
@@ -184,7 +171,8 @@ class PDFExportController extends Controller
                 'client_phone' => 'nullable',
                 'client_mail' => 'nullable',
                 'montant_avanc' => 'nullable',
-                'mode_paiment' => 'nullable'
+                'mode_paiment' => 'nullable',
+                'tax' => 'nullable|string'
             ]);
 
             //contruct array of item details
@@ -257,6 +245,7 @@ class PDFExportController extends Controller
                 'client_country' => request('client_country'),
                 'client_phone' => request('client_phone'),
                 'client_mail' => request('client_mail'),
+                'tax' => request('tax')
             ]);
 
             //create item an store in the db, looping through all the items in the array
@@ -269,7 +258,7 @@ class PDFExportController extends Controller
                     'unit_price' => $item['unit_price'],
                 ]);
             }
-            return redirect()->route('show', ['id' => $invoice->id]);
+            return redirect()->route('show', ['id' => $invoice->id])->with('message', "Votre facturation a été mis a jour avec succès");
         } catch (\Throwable $e) {
             return redirect()->route('home')->with('error', 'Une erreur est survenue',);
         }
@@ -291,100 +280,5 @@ class PDFExportController extends Controller
         }
         $invoice->delete();
         return redirect()->route('home')->with('message', "L'élément a été supprimé avec succès");
-    }
-    // Decharge
-    // public function decharge()
-    // {
-    //     $invoices = Invoice::all();
-    //     return view('decharge', compact('invoices'));
-    // }
-    public function dechargeshow($id)
-    {
-        $decharge = Decharge::find($id);
-        if (!$decharge) {
-            abort(404);
-        }
-        return view('decharge', compact('decharge'));
-    }
-    public function createdecharge()
-    {
-        return view('dechargeform');
-    }
-    public function dechargestore(Request $request)
-    {
-        try {
-            $request->validate([
-                'name' => 'nullable',
-                'client_name' => 'nullable',
-                'amout_received' => 'nullable',
-                'motif' => 'nullable',
-                'number' => 'nullable',
-            ]);
-            $lastDechargeNumber = 0;
-            //get the last added invoice and retrieve its number
-            $lastdecharge = Decharge::latest()->first();
-
-            if ($lastdecharge) {
-                $lastDechargeNumber = $lastdecharge->number;
-            } else {
-                $lastDechargeNumber = 7;
-            }
-            // $lastDechargeNumber = $lastdecharge ? $lastdecharge->number : 0;
-            $number = $lastDechargeNumber + 1;
-            $decharge = Decharge::create([
-                'name' => request('name'),
-                'client_name' => request('client_name'),
-                'amout_received' => request('amout_received'),
-                'motif' => request('motif'),
-                'number' => $number,
-            ]);
-            return redirect()->route('dechargeshow', ['id' => $decharge->id]);
-            // return redirect()->route('decharge')->with('message', "L'élément a été ajouté avec succès");
-        } catch (\Throwable $e) {
-            return redirect()->route('home')->with('error', 'Une erreur est survenue',);
-        }
-    }
-    // delete
-    public function deletedecharge($id)
-    {
-        $decharge = Decharge::find($id);
-        if (!$decharge) {
-            abort(404);
-        }
-        $decharge->delete();
-        return redirect()->route('home')->with('message', "L'élément a été supprimé avec succès");
-    }
-
-    //edit
-    public function editdecharge($id)
-    {
-        $decharge = Decharge::find($id);
-        if (!$decharge) {
-            abort(404);
-        }
-        return view('editdecharge', compact('decharge'));
-    }
-    //update
-    public function updatedecharge(Request $request, $id)
-    {
-        try {
-            $request->validate([
-                'name' => 'nullable',
-                'client_name' => 'nullable',
-                'amout_received' => 'nullable',
-                'motif' => 'nullable',
-                'number' => 'nullable',
-            ]);
-            $decharge = Decharge::find($id);
-            $decharge->update([
-                'name' => request('name'),
-                'client_name' => request('client_name'),
-                'amout_received' => request('amout_received'),
-                'motif' => request('motif'),
-            ]);
-            return redirect()->route('dechargeshow', ['id' => $decharge->id]);
-        } catch (\Throwable $e) {
-            return redirect()->route('home')->with('error', 'Une erreur est survenue',);
-        }
     }
 }
