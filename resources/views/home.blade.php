@@ -79,13 +79,32 @@
                             </td>
                           </tr>
                           @endforeach
+                          @foreach ($decharges as $decharge)
+                              <tr>
+                                <td>Decharge</td>
+                                <td>{{$decharge->client_name}}</td>
+                                <td>{{ $decharge->created_at->format('d/m/Y') }}</td>
+                                <td>
+                                  <a href="{{route('dechargeshow', $decharge->id)}}" class="btn btn-primary">Afficher</a>
+                                  <a href="{{route('dechargepdf', $decharge->id)}}" class="btn btn-success">Télécharger</a>
+                                  <a href="{{route('deletedecharge', $decharge->id)}}" class="btn btn-info">Supprimer</a>
+                                </td>
+                              </tr>
+                          @endforeach
                         </tbody>
                       </table>
                       @else
                       <div class="alert alert-info">Aucune facture n'est Disponible</div>
                       @endif
                       {{-- add new record--}}
-                      <a href="{{route('create')}}" class="btn btn-primary">Ajouter une nouvelle facture</a>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <a href="{{route('create')}}" class="btn btn-primary">Ajouter une nouvelle facture</a>
+                        </div>
+                        <div class="col-md-6">
+                           <a href="{{route('createdecharge')}}" class="btn btn-primary">Ajouter une decharge</a>
+                        </div>
+                      </div>
                     </div>
               </main>
              
