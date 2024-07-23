@@ -30,6 +30,7 @@
     </head>
     <body>
         <div class="receipt">
+            
             <div class="header">
                 <div class="logo">
                     <img src="{{asset('images/logo.png')}}" alt="Belle House Logo" />

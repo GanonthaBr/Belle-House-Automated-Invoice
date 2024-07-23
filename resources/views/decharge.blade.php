@@ -35,10 +35,10 @@
                             <a type="button" href="{{route('home')}}" class="btn btn-dark">
                                 <i class="fa fa-print"></i> Retour
                             </a>
-                            <a type="button" href="{{route('export',$decharge->id)}}" class="btn btn-danger">
+                            <a type="button" href="{{route('dechargepdf',$decharge->id)}}" class="btn btn-danger">
                                 <i class="fa fa-file-pdf-o"></i> Exporter en PDF
                             </a>
-                            <a type="button" href="{{route('edit',$decharge->id)}}" class="btn btn-info">
+                            <a type="button" href="{{route('editdecharge',$decharge->id)}}" class="btn btn-info">
                                 <i class="fa fa-file-pdf-o"></i> Modifier
                             </a>
 

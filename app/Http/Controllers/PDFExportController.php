@@ -327,4 +327,47 @@ class PDFExportController extends Controller
             return redirect()->route('home')->with('error', 'Une erreur est survenue',);
         }
     }
+    // delete
+    public function deletedecharge($id)
+    {
+        $decharge = Decharge::find($id);
+        if (!$decharge) {
+            abort(404);
+        }
+        $decharge->delete();
+        return redirect()->route('home')->with('message', "L'élément a été supprimé avec succès");
+    }
+
+    //edit
+    public function editdecharge($id)
+    {
+        $decharge = Decharge::find($id);
+        if (!$decharge) {
+            abort(404);
+        }
+        return view('editdecharge', compact('decharge'));
+    }
+    //update
+    public function updatedecharge(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'name' => 'nullable',
+                'client_name' => 'nullable',
+                'amout_received' => 'nullable',
+                'motif' => 'nullable',
+                'number' => 'nullable',
+            ]);
+            $decharge = Decharge::find($id);
+            $decharge->update([
+                'name' => request('name'),
+                'client_name' => request('client_name'),
+                'amout_received' => request('amout_received'),
+                'motif' => request('motif'),
+            ]);
+            return redirect()->route('dechargeshow', ['id' => $decharge->id]);
+        } catch (\Throwable $e) {
+            return redirect()->route('home')->with('error', 'Une erreur est survenue',);
+        }
+    }
 }

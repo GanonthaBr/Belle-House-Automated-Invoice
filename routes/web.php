@@ -23,3 +23,7 @@ Route::get('/decharge', [PDFExportController::class, 'decharge'])->name('decharg
 Route::post('/dechargestore', [PDFExportController::class, 'dechargestore'])->name('dechargestore'); //add new
 Route::get('/createdecharge', [PDFExportController::class, 'createdecharge'])->name('createdecharge');
 Route::get('/decharge/{id}', [PDFExportController::class, 'dechargeshow'])->name('dechargeshow'); //dowload
+Route::get('/editdecharge/{id}', [PDFExportController::class, 'editdecharge'])->name('editdecharge'); //edit
+Route::put('/updatedecharge/{id}', [PDFExportController::class, 'updatedecharge'])->name('updatedecharge'); //update
+Route::get('/deletedecharge/{id}', [PDFExportController::class, 'deletedecharge'])->name('deletedecharge'); //remove
+Route::get('/dechargepdf/{id}', [PDFExportController::class, 'dechargepdf'])->name('dechargepdf'); //dowload
