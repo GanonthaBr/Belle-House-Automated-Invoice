@@ -25,7 +25,7 @@
             < Retour </a>
     </div>
     <div class="container">
-        <form action="{{route('updatedecharge')}}" method="post">
+        <form action="{{route('updatedecharge',$decharge->id)}}" method="post">
             @csrf
      
                 <div class="mb-3">
