@@ -26,6 +26,7 @@
     </div>
     <div class="container">
         <form action="{{route('updatedecharge',$decharge->id)}}" method="post">
+              @method('PUT')
             @csrf
      
                 <div class="mb-3">
