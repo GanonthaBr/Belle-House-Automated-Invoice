@@ -73,7 +73,7 @@ class PDFExportController extends Controller
                 'client_mail' => 'nullable',
                 'montant_avanc' => 'nullable',
                 'mode_paiment' => 'nullable',
-                'tax' => 'boolean'
+                'tax' => 'nullable'
             ]);
 
             //contruct array of item details
