@@ -63,7 +63,7 @@
                     <lable class="form-label" for="objet" >
                         <b>Objet</b>
                     </lable>
-                    <input type="text" class="form-control" name="objet" id="objet">
+                    <input type="text" class="form-control" name="objet" id="objet" value="{{$invoice->objet}}" >
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="name" id="Devis" value="Devis" {{ $invoice->name == 'Devis' ? 'checked' : '' }}>
