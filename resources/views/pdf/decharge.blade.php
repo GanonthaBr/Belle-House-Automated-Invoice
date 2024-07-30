@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -213,6 +216,7 @@
                 </tbody>
             </table>
         </div>
+
         <div class="body">
             <p>
                 Je soussigné <strong>Mr AGABA Moussa,</strong> Directeur Général à Belle
@@ -221,6 +225,7 @@
                 <strong> {{$decharge->motif}} </strong>.
             </p>
         </div>
+
         <div class="bottom">
             <table style="width: 100%;">
                 <tr>
