@@ -44,8 +44,11 @@ body {
     font-style: italic;
     color: #61a1d6;
 }
+.company-details {
+    margin-bottom: 2rem;
+}
 .company-details p {
-    margin: 2px 0;
+    margin: 0;
     font-size: 12px;
 }
 .company-details a {
@@ -62,12 +65,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 40px 0;
     font-size: 14px;
 }
 
 .body {
-    font-family: "Playwrite PE", cursive;
+    /* font-family: "Playwrite PE", cursive; */
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
