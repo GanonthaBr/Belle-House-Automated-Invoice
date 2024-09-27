@@ -26,101 +26,196 @@
     </div>
     <div class="container">
         <form action="{{route('store')}}" method="post">
+
             @csrf
+
             <fieldset>
+
                 <legend>Informations du client</legend>
+
                 <div class="mb-3">
+
                     <label for="client_name" class="form-label">Nom</label>
+
                     <input type="text" class="form-control" name="client_name" id="client_name">
+
                 </div>
+
                 <div class="mb-3">
+
                     <label for="client_quartier" class="form-label">Quartier:</label>
+
                     <input type="text" class="form-control" name="client_quartier" id="client_quartier">
+
                 </div>
+
                 <div class="mb-3">
+
                     <label for="client_city" class="form-label">Ville:</label>
+
                     <input type="text" class="form-control" name="client_city" id="client_city">
+
                 </div>
+
                 <div class="mb-3">
+
                     <label for="client_country" class="form-label">Pays:</label>
+
                     <input type="text" class="form-control" name="client_country" id="client_country">
+
                 </div>
+
                 <div class="mb-3">
+
                     <label for="client_phone" class="form-label">Telephone:</label>
+
                     <input type="text" class="form-control" name="client_phone" id="client_phone">
+
                 </div>
+
                 <div class="mb-3">
+
                     <label for="client_mail" class="form-label">Email:</label>
+
                     <input type="text" class="form-control" name="client_mail" id="client_mail">
+
                 </div>
+
             </fieldset>
+
             <fieldset>
+
                 <legend>Informations de la Facture</legend>
+
+
+
                 <div class="form-check">
+
                     <label for="name" class="form-label"> <b>Type:</b> </label> <br>
-                    <input class="form-check-input" type="radio" name="name" id="facture" value="Facture">
+
+
+
+                    <input class="form-check-input" type="radio" name="name" id="facture" value="Facture" required>
+
                     <label class="form-check-label" for="facture">
+
                         Facture
+
                     </label>
+
+                </div>
+                 
+
+                <div class="form-check">
+
+                    <input class="form-check-input" type="radio" name="name" id="Devis" value="Devis" checked required>
+
+                    <label class="form-check-label" for="Devis">
+
+                        Facture Proforma
+
+                    </label>
+
                 </div>
                 <div class="form-check">
                     <lable class="form-label" for="objet" >
-                        <b>Objet</b>
+                        <b>Objet:</b>
                     </lable>
-                    <input type="text" class="form-control" name="objet" id="objet">
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="name" id="Devis" value="Devis" checked>
-                    <label class="form-check-label" for="Devis">
-                        Facture Proforma
-                    </label>
+                    <input type="text" class="form-control" name="objet" id="objet" required>
                 </div>
                 <div class="form-check">
                     <label for="mode-paiment" class="form-label"> <b>Mode de Paiement</b> </label> <br>
-                    <input class="form-check-input" type="radio" name="mode-paiment" id="en_liquide" value="En ESPÈCES">
-                    <label class="form-check-label" for="en_liquide"> EN ESPECES</label>
+                    <input class="form-check-input" type="radio" name="mode-paiment" id="en_liquide" value="En ESPÈCES" required>
+                    <label class="form-check-label" for="en_liquide"> En ESPÈCES</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="mode-paiment" id="par_banque" value="PAR VERSEMENT">
+                    <input class="form-check-input" type="radio" name="mode-paiment" id="par_banque" value="PAR VERSEMENT" required>
                     <label class="form-check-label" for="par_banque"> PAR VERSEMENT</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="mode-paiment" id="par_banque" value="PAR CHEQUE" checked>
+                    <input class="form-check-input" type="radio" name="mode-paiment" id="par_banque" value="PAR CHEQUE" checked required>
                     <label class="form-check-label" for="par_banque"> PAR CHEQUE</label>
                 </div>
                 <div class="mb-3">
+
                     <label for="echeance" class="form-label">Echeance:</label>
-                    <input type="date" class="form-control" name="echeance" id="echeance">
+
+                    <input type="date" class="form-control" name="echeance" id="echeance" required>
+
                 </div>
+
                 <div class="form-check">
                     <label for="mode-paiment" class="form-label"> <b>Section Taxe</b> </label> <br>
-                    <label class="form-check-label" for="tax">TAXE</label>
-                    <input type="radio" id="tax" name="tax[]" value="OUI" class="form-check-input">
+                    <input type="radio" id="tax" name="tax" class="form-check-input" value="oui" checked required>
+                    <label class="form-check-label" for="tax">OUI</label>
                 </div>
-              
+                 <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tax" id="par_banque" value="non" required>
+                    <label class="form-check-label" for="par_banque">NON</label>
+                </div>
+
+                {{-- <div class="mb-3">
+
+                    <label for="number" class="form-label">Numero de Facture:</label>
+
+                    <input type="text" class="form-control" name="number" id="number">
+
+                </div> --}}
+ 
+                {{-- <div class="mb-3">
+
+                    <label for="montant_avanc" class="form-label">Montant avancé:</label>
+
+                    <input type="text" class=" form-control" name="montant_avanc" id="montant_avanc">
+
+                </div> --}}
+
             </fieldset>
+
             <fieldset>
+
                 <legend>Liste des Elements</legend>
+
                 <div id="itemFieldsContainer">
+
                     <div class="itemField">
+
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="itemNames[]" placeholder="Designation">
+
+                            <input type="text" class="form-control" name="itemNames[]" placeholder="Designation" required>
+
                         </div>
+
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="itemDetails[]" placeholder="Bref details Details">
+
+                            <input type="text" class="form-control" name="itemDetails[]" placeholder="Bref details Details" required>
+
                         </div>
+
                         <div class="mb-3">
-                            <input type="number" class="form-control" name="itemQuantities[]" placeholder="Quantity">
+
+                            <input type="number" class="form-control" name="itemQuantities[]" placeholder="Quantity" required>
+
                         </div>
+
                         <div class="mb-3">
-                            <input type="number" class="form-control" name="itemPrices[]" placeholder="Prix Unitaire">
+
+                            <input type="number" class="form-control" name="itemPrices[]" placeholder="Prix Unitaire" required>
+
                         </div>
+
                         <button type="button" onclick="removeItemField(this)">Remove</button>
+
                     </div>
+
                 </div>
-                <button type="button" id="addItemField">Add Item</button>
+
+                <button type="button" id="addItemField">Ajouter un Element</button>
+
             </fieldset>
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <button type="submit" class="btn btn-primary">Valider</button>
+
         </form>
     </div>
     <script>

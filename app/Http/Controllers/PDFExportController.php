@@ -18,7 +18,7 @@ class PDFExportController extends Controller
     {
         // set maximum execution time
         try {
-            ini_set('max_execution_time', 3000);
+            ini_set('max_execution_time', 10000);
             $invoiceData = Invoice::find($id); // Assuming you have an Invoice model
             if (!$invoiceData) {
                 abort(404);
@@ -31,7 +31,9 @@ class PDFExportController extends Controller
             $pdf = PDF::loadView('pdf.invoice', $data);
             return $pdf->download('invoice.pdf');
         } catch (\Throwable $e) {
-            return redirect()->route('home')->with('error', 'Une erreur est survenue');
+
+
+            return redirect()->route('home')->with('error', 'Une erreur est survenue lors du telechargement');
         }
     }
     public function dechargepdf($id)
@@ -49,6 +51,7 @@ class PDFExportController extends Controller
             $pdf = PDF::loadView('pdf.decharge', $data);
             return $pdf->download('decharge.pdf');
         } catch (\Throwable $e) {
+            // return redirect()->route('home')->with('error', $e->getMessage());
             return redirect()->route('home')->with('error', 'Une erreur est survenue');
         }
     }
@@ -75,6 +78,7 @@ class PDFExportController extends Controller
                 'mode_paiment' => 'nullable',
                 'tax' => 'nullable'
             ]);
+            // dd($request->all());
 
             //contruct array of item details
             $items = [];
@@ -92,43 +96,50 @@ class PDFExportController extends Controller
             $invoices = Invoice::all();
 
             // $lastInvoice->number = 21;
+            $lastInvoiceNumber = 0;
             $factures = [];
             $devis = [];
-            if ($lastInvoice->name == 'Facture') {
-                if ($request->name == 'Facture') {
-                    foreach ($invoices as $Invoice) {
-                        if ($Invoice->name == 'Facture') {
-                            $factures[] = $Invoice;
+
+            if ($invoices->count()) {
+                if ($lastInvoice->name == 'Facture') {
+                    if ($request->name == 'Facture') {
+                        foreach ($invoices as $Invoice) {
+                            if ($Invoice->name == 'Facture') {
+                                $factures[] = $Invoice;
+                            }
                         }
+                        $lastInvoice = end($factures);
+                    } else {
+                        foreach ($invoices as $Invoice) {
+                            if ($Invoice->name == 'Devis') {
+                                $devis[] = $Invoice;
+                            }
+                        }
+                        $lastInvoice = end($devis);
                     }
-                    $lastInvoice = end($factures);
                 } else {
-                    foreach ($invoices as $Invoice) {
-                        if ($Invoice->name == 'Devis') {
-                            $devis[] = $Invoice;
+                    if ($request->name == 'Facture') {
+                        foreach ($invoices as $Invoice) {
+                            if ($Invoice->name == 'Facture') {
+                                $factures[] = $Invoice;
+                            }
                         }
+                        $lastInvoice = end($factures);
+                    } else {
+                        foreach ($invoices as $Invoice) {
+                            if ($Invoice->name == 'Devis') {
+                                $devis[] = $Invoice;
+                            }
+                        }
+                        $lastInvoice = end($devis);
                     }
-                    $lastInvoice = end($devis);
                 }
             } else {
-                if ($request->name == 'Facture') {
-                    foreach ($invoices as $Invoice) {
-                        if ($Invoice->name == 'Facture') {
-                            $factures[] = $Invoice;
-                        }
-                    }
-                    $lastInvoice = end($factures);
-                } else {
-                    foreach ($invoices as $Invoice) {
-                        if ($Invoice->name == 'Devis') {
-                            $devis[] = $Invoice;
-                        }
-                    }
-                    $lastInvoice = end($devis);
-                }
+                $lastInvoiceNumber = 0;
             }
             $lastInvoiceNumber = $lastInvoice ? $lastInvoice->number : 0;
             $number = $lastInvoiceNumber + 1;
+
             //create an instance of invoice and save to db
             $invoice = Invoice::create([
                 'name' => request('name'),
@@ -156,6 +167,7 @@ class PDFExportController extends Controller
             }
             return redirect()->route('show', ['id' => $invoice->id]);
         } catch (\Throwable $e) {
+            // return redirect()->route('home')->with('error', $e);
             return redirect()->route('home')->with('error', 'Une erreur est survenue',);
         }
     }
